@@ -7,6 +7,7 @@
 """
 from __future__ import annotations
 
+import numpy as np
 import pandas as pd
 
 from qlab.config import TF_MINUTES
@@ -18,12 +19,27 @@ BAR_AGG = {
 
 
 def resample(m1: pd.DataFrame, tf: str) -> pd.DataFrame:
-    """1m → ТФ. Бар неполный, если в нём меньше минут, чем положено (пропуски в источнике)."""
+    """1m → ТФ. Бар неполный, если в нём меньше минут, чем положено (пропуски в источнике).
+
+    Кроме OHLCV считаются агрегаты минуток внутри бара (ib_*) — информация, которой нет в OHLC бара:
+    реализованная дисперсия, длина пути, смены знака, доля объёма последней и самой объёмной минуты.
+    """
     minutes = TF_MINUTES[tf]
     step = pd.Timedelta(minutes=minutes)
-    g = m1.groupby(m1["ts"].dt.floor(step), sort=True)
+    bucket = m1["ts"].dt.floor(step)
+    r1 = np.log(m1["close"]).diff()
+    same = bucket.eq(bucket.shift())
+    m = m1.assign(_r2=r1 ** 2, _abs=r1.abs(),
+                  _chg=(same & (np.sign(r1) != np.sign(r1.shift())) & r1.ne(0) & r1.shift().ne(0)).astype(float))
+    g = m.groupby(bucket, sort=True)
     bars = g.agg(BAR_AGG)
     bars["n_minutes"] = g.size()
+    bars["ib_rv"] = np.sqrt(g["_r2"].sum())
+    bars["ib_path"] = g["_abs"].sum()
+    bars["ib_max_abs_r"] = g["_abs"].max()
+    bars["ib_sign_changes"] = g["_chg"].sum()
+    bars["ib_last_vol_share"] = g["volume"].last() / bars["volume"].replace(0, np.nan)
+    bars["ib_max_vol_share"] = g["volume"].max() / bars["volume"].replace(0, np.nan)
     bars = bars.reset_index()
     bars["available_at"] = bars["ts"] + step
     bars["complete"] = bars["n_minutes"] == minutes
@@ -46,11 +62,12 @@ def _asof(bars: pd.DataFrame, ext: pd.DataFrame, value_cols: list[str], prefix: 
 def build(m1: pd.DataFrame, tf: str, *, oi: pd.DataFrame | None, funding: pd.DataFrame | None,
           btc_m1: pd.DataFrame | None, oi_lag_minutes: float, oi_max_staleness_minutes: float) -> pd.DataFrame:
     bars = resample(m1, tf)
+    metric_cols = ["oi", "ls_ratio_accounts", "taker_ls_vol_ratio"]
     if oi is not None and not oi.empty:
-        bars = _asof(bars, oi, ["oi"], "oi", pd.Timedelta(minutes=oi_lag_minutes),
-                     pd.Timedelta(minutes=oi_max_staleness_minutes))
+        bars = _asof(bars, oi.reindex(columns=["ts", *metric_cols]), metric_cols, "oi",
+                     pd.Timedelta(minutes=oi_lag_minutes), pd.Timedelta(minutes=oi_max_staleness_minutes))
     else:
-        bars["oi"] = float("nan")
+        bars[metric_cols] = float("nan")
     if funding is not None and not funding.empty:
         # ставка известна в момент расчёта (calc_time)
         bars = _asof(bars, funding, ["funding_rate"], "funding", pd.Timedelta(0), None)

@@ -65,6 +65,18 @@ def _cmp(base: pd.DataFrame, hyp: pd.DataFrame, col: str, b: int, n_perm: int, r
     return c.as_dict() if c else None
 
 
+def with_factory(data: Data, bars: pd.DataFrame, market: str, tf: str, names: list) -> pd.DataFrame:
+    """Добавить к барам нужные признаки Feature Factory (гипотеза собирается из готовых признаков)."""
+    from qlab.factory import load_all
+    need = [n for n in dict.fromkeys(names) if n and n not in bars.columns and n in load_all()]
+    if not need:
+        return bars
+    fac = data.factory(market, tf, need)
+    if not fac["ts"].equals(bars["ts"]):
+        raise RuntimeError("кэш Feature Factory не совпадает с барами — пересчитайте кэш")
+    return bars.join(fac[need])
+
+
 def evaluate_market(cfg: Config, data: Data, h: Hypothesis, market: str, tf: str,
                     start: pd.Timestamp, end: pd.Timestamp, rng) -> MarketResult:
     st, o = cfg.section("stats"), h.outcome
@@ -76,6 +88,7 @@ def evaluate_market(cfg: Config, data: Data, h: Hypothesis, market: str, tf: str
     bars, m1 = data.bars(market, tf), data.m1(market)
 
     filter_cols = sorted(set().union(*(expr.names(f) for f in h.filters)) - set(BASE_COLS)) if h.filters else []
+    bars = with_factory(data, bars, market, tf, filter_cols + [h.event_params.get("feature")])
     unknown = [c for c in filter_cols if c not in bars.columns]
     if unknown:
         raise ValueError(f"{h.id}: в фильтрах неизвестные признаки {unknown}")

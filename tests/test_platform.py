@@ -98,3 +98,25 @@ def test_discovery_finds_planted_effect(tmp_path):
     hs = discovery.register_candidates(cfg, reg, cand, "test", root=tmp_path / "disc")
     assert any(h.event["type"] == "session_open" and h.direction == "with" for h in hs)
     assert all(reg.items[h.id]["status"] == "Testing" for h in hs)
+
+
+def test_factory_analysis_end_to_end(env, tmp_path):
+    from qlab.factory import analysis
+    _, cfg, data = env
+    report = analysis.run(cfg, data, tmp_path / "factory", max_rows=5000)
+    text = report.read_text()
+    assert "Дубли" in text and "Кластеры" in text
+    assert (tmp_path / "factory" / "core_features.json").exists()
+    assert len(list(data.cache_dir.glob("factory_ETHUSDT_5m_*.parquet"))) == 1
+
+
+def test_hypothesis_built_from_factory_features(env, tmp_path):
+    """Гипотеза собирается из готовых признаков фабрики — без нового кода."""
+    _, cfg, data = env
+    p = copy_h(tmp_path, "hypotheses/H002-sweep-continuation.yaml", id="H950", timeframes=["15m"], clean_after=None,
+               filters=["mo_ret_3 > 0 and en_permutation_24 < 0.99", "of_taker_share_6 > -0.5"])
+    reg = Registry(tmp_path / "r.json")
+    h = Hypothesis.load(p)
+    reg.register(h)
+    _, report = engine.run(cfg, data, h, reg, "validation", out_root=tmp_path / "checks")
+    assert "mo_ret_3" in report.read_text()

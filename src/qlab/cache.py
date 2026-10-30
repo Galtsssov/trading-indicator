@@ -13,11 +13,12 @@ from pathlib import Path
 
 import pandas as pd
 
-from qlab import dataset, features
+from qlab import dataset, factory, features
 from qlab.config import TF_MINUTES, Config
 
 log = logging.getLogger(__name__)
 SOURCES = [Path(dataset.__file__), *sorted(Path(features.__file__).parent.glob("*.py"))]
+FACTORY_SOURCES = sorted(Path(factory.__file__).parent.glob("f_*.py")) + [Path(factory.__file__)]
 
 
 class Data:
@@ -70,3 +71,23 @@ class Data:
             old.unlink()
         bars.to_parquet(path, index=False)
         return bars
+
+    def factory(self, symbol: str, tf: str, columns: list[str] | None = None) -> pd.DataFrame:
+        """Признаки Feature Factory (float32), строки выровнены с bars(symbol, tf); есть колонка ts.
+        Считаются один раз; ключ — ключи баров всех монет + исходный код фабрики."""
+        h = hashlib.sha256()
+        for s in self.cfg.symbols:
+            h.update(self._key(s, tf).encode())
+        for src in FACTORY_SOURCES:
+            h.update(src.read_bytes())
+        path = self.cache_dir / f"factory_{symbol}_{tf}_{h.hexdigest()[:16]}.parquet"
+        if not path.exists():
+            log.info("Feature Factory: считаю %s %s", symbol, tf)
+            bars = self.bars(symbol, tf)
+            others = {s: self.bars(s, tf).set_index("ts")[["close", "volume"]] for s in self.cfg.symbols}
+            out = factory.compute(bars, symbol, TF_MINUTES[tf], others)
+            out.insert(0, "ts", bars["ts"].to_numpy())
+            for old in path.parent.glob(f"factory_{symbol}_{tf}_*.parquet"):
+                old.unlink()
+            out.to_parquet(path, index=False)
+        return pd.read_parquet(path, columns=None if columns is None else ["ts", *columns])

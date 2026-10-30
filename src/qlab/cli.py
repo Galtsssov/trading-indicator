@@ -8,7 +8,9 @@
   test ID [--split S]   проверить гипотезу (validation по умолчанию; holdout — только с --confirm-holdout)
   discover              поиск аномалий на training, регистрация кандидатов
   pending               проверить на validation все гипотезы Testing без проверки
-  all                   fetch → quality → cache → discover → pending (holdout не трогается)
+  catalog               пересобрать docs/FEATURES.md из спецификаций Feature Factory
+  factory               посчитать Feature Factory и отчёт: корреляции, дубли, кластеры (training)
+  all                   fetch → quality → cache → factory → pending (holdout не трогается)
 """
 from __future__ import annotations
 
@@ -20,6 +22,8 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 from qlab import discovery, engine
+from qlab.factory import analysis as factory_analysis
+from qlab.factory import docs as factory_docs
 from qlab.cache import Data
 from qlab.config import Config
 from qlab.data import binance, quality
@@ -106,6 +110,12 @@ def cmd_discover(cfg: Config, data: Data, reg: Registry) -> None:
     log.info("discovery: %s", path)
 
 
+def cmd_factory(cfg: Config, data: Data) -> None:
+    path = factory_analysis.run(cfg, data, Path("reports/factory"))
+    ledger("factory", report=str(path))
+    log.info("Feature Factory: %s", path)
+
+
 def cmd_pending(cfg: Config, data: Data, reg: Registry) -> None:
     for hid, e in sorted(reg.items.items()):
         if e["status"] == "Testing" and not any(c["split"] == "validation" for c in e["checks"]):
@@ -115,7 +125,7 @@ def cmd_pending(cfg: Config, data: Data, reg: Registry) -> None:
 def main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(prog="qlab", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("command", choices=["fetch", "quality", "cache", "registry", "register", "test", "discover",
-                                        "pending", "all"])
+                                        "pending", "catalog", "factory", "all"])
     ap.add_argument("args", nargs="*")
     ap.add_argument("--config", default="configs/platform.toml")
     ap.add_argument("--registry", default="hypotheses/registry.json")
@@ -143,9 +153,13 @@ def main(argv: list[str] | None = None) -> None:
             cmd_discover(cfg, data, reg)
         case "pending":
             cmd_pending(cfg, data, reg)
+        case "catalog":
+            log.info("каталог: %s", factory_docs.write())
+        case "factory":
+            cmd_factory(cfg, data)
         case "all":
             cmd_fetch(cfg)
             cmd_quality(cfg)
             cmd_cache(cfg, data)
-            cmd_discover(cfg, data, reg)
+            cmd_factory(cfg, data)
             cmd_pending(cfg, data, reg)

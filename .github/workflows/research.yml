@@ -1,5 +1,5 @@
 # Тесты на каждый push; исследование на реальных данных Binance — по кнопке (Actions → research → Run workflow).
-# `all` = данные → качество → кэш признаков → discovery (training) → проверка новых гипотез (validation).
+# `all` = данные → качество → кэш признаков → Feature Factory (training) → проверка новых гипотез (validation).
 # Holdout здесь никогда не открывается.
 name: research
 
@@ -7,6 +7,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      command:
+        description: "Команда qlab (all, discover, factory, pending ...)"
+        default: "all"
 
 permissions:
   contents: write
@@ -38,10 +42,15 @@ jobs:
           path: |
             data/raw
             data/cache
+            !data/cache/factory_*
           key: binance-${{ github.run_id }}
           restore-keys: binance-
-      - name: Данные → кэш признаков → discovery → проверка гипотез
-        run: python -m qlab all
+      - name: Данные → кэш признаков → Feature Factory → проверка гипотез
+        env:
+          CMD: ${{ inputs.command || 'all' }}
+        run: |
+          if [ "$CMD" = "all" ]; then python -m qlab all
+          else python -m qlab fetch && python -m qlab cache && python -m qlab $CMD; fi
       - uses: actions/upload-artifact@v4
         with:
           name: report
