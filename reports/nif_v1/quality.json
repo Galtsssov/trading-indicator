@@ -1,0 +1,238 @@
+[
+ {
+  "dataset": "klines_1m",
+  "symbol": "ETHUSDT",
+  "rows": 3588480,
+  "first": "2020-01-01 00:00:00+00:00",
+  "last": "2026-10-27 23:59:00+00:00",
+  "expected_rows": 3588480,
+  "coverage_pct": 100.0,
+  "missing_rows": 0,
+  "duplicates_dropped": 0,
+  "largest_gaps": [],
+  "issues": {
+   "ohlc_inconsistent": 0,
+   "zero_volume_bars": 302,
+   "abs_1m_return_gt_10pct": 3,
+   "taker_buy_gt_volume": 0
+  },
+  "verdict": "ГОДНО"
+ },
+ {
+  "dataset": "metrics",
+  "symbol": "ETHUSDT",
+  "rows": 516532,
+  "first": "2021-12-01 00:00:00+00:00",
+  "last": "2026-10-29 23:55:00+00:00",
+  "expected_rows": 516672,
+  "coverage_pct": 99.973,
+  "missing_rows": 140,
+  "duplicates_dropped": 0,
+  "largest_gaps": [
+   [
+    "2024-02-16 13:30:00+00:00",
+    "0 days 10:30:00"
+   ],
+   [
+    "2023-09-12 08:35:00+00:00",
+    "0 days 00:20:00"
+   ],
+   [
+    "2025-08-29 06:15:00+00:00",
+    "0 days 00:20:00"
+   ],
+   [
+    "2021-12-04 05:20:00+00:00",
+    "0 days 00:15:00"
+   ],
+   [
+    "2024-10-28 16:20:00+00:00",
+    "0 days 00:15:00"
+   ]
+  ],
+  "issues": {
+   "oi_nonpositive_or_nan": 215,
+   "oi_5m_jump_gt_20pct": 149
+  },
+  "verdict": "ГОДНО"
+ },
+ {
+  "dataset": "funding",
+  "symbol": "ETHUSDT",
+  "rows": 7395,
+  "first": "2020-01-01 00:00:00+00:00",
+  "last": "2026-09-30 16:00:00.002000+00:00",
+  "expected_rows": null,
+  "coverage_pct": null,
+  "missing_rows": null,
+  "duplicates_dropped": 0,
+  "largest_gaps": [],
+  "issues": {
+   "funding_nan": 0,
+   "funding_abs_gt_1pct": 0,
+   "interval_8h": 7394
+  },
+  "verdict": "ГОДНО"
+ },
+ {
+  "dataset": "klines_1m",
+  "symbol": "SOLUSDT",
+  "rows": 3210780,
+  "first": "2020-09-14 07:00:00+00:00",
+  "last": "2026-10-27 23:59:00+00:00",
+  "expected_rows": 3217980,
+  "coverage_pct": 99.776,
+  "missing_rows": 7200,
+  "duplicates_dropped": 0,
+  "largest_gaps": [
+   [
+    "2022-02-25 23:59:00+00:00",
+    "3 days 00:01:00"
+   ],
+   [
+    "2022-03-31 23:59:00+00:00",
+    "2 days 00:01:00"
+   ]
+  ],
+  "issues": {
+   "ohlc_inconsistent": 0,
+   "zero_volume_bars": 473,
+   "abs_1m_return_gt_10pct": 10,
+   "taker_buy_gt_volume": 0
+  },
+  "verdict": "ГОДНО"
+ },
+ {
+  "dataset": "metrics",
+  "symbol": "SOLUSDT",
+  "rows": 516515,
+  "first": "2021-12-01 00:00:00+00:00",
+  "last": "2026-10-29 23:55:00+00:00",
+  "expected_rows": 516672,
+  "coverage_pct": 99.97,
+  "missing_rows": 157,
+  "duplicates_dropped": 0,
+  "largest_gaps": [
+   [
+    "2024-02-16 13:30:00+00:00",
+    "0 days 10:30:00"
+   ],
+   [
+    "2023-12-12 23:15:00+00:00",
+    "0 days 00:45:00"
+   ],
+   [
+    "2023-12-08 23:20:00+00:00",
+    "0 days 00:40:00"
+   ],
+   [
+    "2023-09-12 08:35:00+00:00",
+    "0 days 00:20:00"
+   ],
+   [
+    "2025-08-29 06:15:00+00:00",
+    "0 days 00:20:00"
+   ]
+  ],
+  "issues": {
+   "oi_nonpositive_or_nan": 201,
+   "oi_5m_jump_gt_20pct": 120
+  },
+  "verdict": "ГОДНО"
+ },
+ {
+  "dataset": "funding",
+  "symbol": "SOLUSDT",
+  "rows": 6700,
+  "first": "2020-09-13 16:00:00.004000+00:00",
+  "last": "2026-09-30 16:00:00.002000+00:00",
+  "expected_rows": null,
+  "coverage_pct": null,
+  "missing_rows": null,
+  "duplicates_dropped": 0,
+  "largest_gaps": [],
+  "issues": {
+   "funding_nan": 0,
+   "funding_abs_gt_1pct": 11,
+   "interval_8h": 6598,
+   "interval_2h": 98,
+   "interval_4h": 3
+  },
+  "verdict": "ОСТОРОЖНО: аномалий > 0.1% строк"
+ },
+ {
+  "dataset": "klines_1m",
+  "symbol": "BTCUSDT",
+  "rows": 3588480,
+  "first": "2020-01-01 00:00:00+00:00",
+  "last": "2026-10-27 23:59:00+00:00",
+  "expected_rows": 3588480,
+  "coverage_pct": 100.0,
+  "missing_rows": 0,
+  "duplicates_dropped": 0,
+  "largest_gaps": [],
+  "issues": {
+   "ohlc_inconsistent": 0,
+   "zero_volume_bars": 369,
+   "abs_1m_return_gt_10pct": 0,
+   "taker_buy_gt_volume": 0
+  },
+  "verdict": "ГОДНО"
+ },
+ {
+  "dataset": "metrics",
+  "symbol": "BTCUSDT",
+  "rows": 647366,
+  "first": "2020-09-01 00:00:00+00:00",
+  "last": "2026-10-29 23:55:00+00:00",
+  "expected_rows": 648000,
+  "coverage_pct": 99.902,
+  "missing_rows": 634,
+  "duplicates_dropped": 75255,
+  "largest_gaps": [
+   [
+    "2024-02-16 13:30:00+00:00",
+    "0 days 10:30:00"
+   ],
+   [
+    "2021-02-19 20:00:00+00:00",
+    "0 days 05:20:00"
+   ],
+   [
+    "2021-06-22 18:25:00+00:00",
+    "0 days 04:25:00"
+   ],
+   [
+    "2021-06-22 00:20:00+00:00",
+    "0 days 03:10:00"
+   ],
+   [
+    "2021-04-27 11:05:00+00:00",
+    "0 days 02:35:00"
+   ]
+  ],
+  "issues": {
+   "oi_nonpositive_or_nan": 481,
+   "oi_5m_jump_gt_20pct": 542
+  },
+  "verdict": "ОСТОРОЖНО: аномалий > 0.1% строк"
+ },
+ {
+  "dataset": "funding",
+  "symbol": "BTCUSDT",
+  "rows": 7395,
+  "first": "2020-01-01 00:00:00+00:00",
+  "last": "2026-09-30 16:00:00.002000+00:00",
+  "expected_rows": null,
+  "coverage_pct": null,
+  "missing_rows": null,
+  "duplicates_dropped": 0,
+  "largest_gaps": [],
+  "issues": {
+   "funding_nan": 0,
+   "funding_abs_gt_1pct": 0,
+   "interval_8h": 7394
+  },
+  "verdict": "ГОДНО"
+ }
+]
