@@ -1,0 +1,29 @@
+# ЗАКРЫТА. Проверена на этапе 2.1, отчёт reports/nif_v1/REPORT.md (код — коммит 9bf3969).
+# Внесена в реестр, чтобы ту же идею нельзя было проверить повторно под другим названием.
+id: H001
+name: "NIF: разворот после свипа при падении OI"
+description: >
+  Главная гипотеза этапа 1: исход свипа определяется характером потока. При падении OI (закрытие
+  позиций, стопы, ликвидации) после свипа ожидался разворот, при росте OI — продолжение.
+source: "research/03-sweeps-and-contradictions.md (NIF); этап 2.1, reports/nif_v1/REPORT.md"
+created: 2026-10-30
+rationale: "Принудительный поток оставляет временный ценовой импакт (Grossman–Miller, Hendershott–Menkveld)."
+event:
+  type: liquidity_sweep
+  params: {lookback: 24, min_age: 3, depth_atr: 0.10, cooldown: 12}
+direction: against
+filters: ["oi_change < 0"]
+markets: [ETHUSDT, SOLUSDT, BTCUSDT]
+timeframes: [5m, 15m]
+outcome: {r_atr: 1.0, target_r: 1.0, horizon_bars: 24}
+features_used: [oi_change, atr]
+confirmation: "E[OI падает] − E[OI растёт] ≥ 0.05R, CI > 0, p(BH) < 0.05 на ETH и SOL одного ТФ, в ≥ 3 из 4 глубин свипа."
+refutation: "Иначе."
+criteria:
+  split: validation
+  min_events: 300
+  alpha: 0.05
+  practical_min_delta_r: 0.05
+  require_markets: [ETHUSDT, SOLUSDT]
+  require_positive_net: true
+  beat_baselines: [random_entry, mean_reversion, momentum, buy_every_sweep, sell_every_sweep]

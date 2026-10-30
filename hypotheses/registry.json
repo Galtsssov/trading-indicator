@@ -1,0 +1,30 @@
+{
+ "hypotheses": {
+  "H001": {
+   "name": "NIF: разворот после свипа при падении OI",
+   "path": "hypotheses/H001-nif.yaml",
+   "source": "research/03-sweeps-and-contradictions.md (NIF); этап 2.1, reports/nif_v1/REPORT.md",
+   "created": "2026-10-30",
+   "registered_at": "2026-10-30T09:00:49+00:00",
+   "fingerprint": "e039d554db26e5ea",
+   "lock": "a8a554479862a79a",
+   "status": "Rejected",
+   "reason": "этап 2.1 (reports/nif_v1/REPORT.md): ΔE между свипами с падением и ростом OI от −0.03 до +0.04R во всех 6 парах монета×ТФ, ни одно сравнение не значимо после BH; закрыта решением владельца 30.10.2026",
+   "holdout_used": false,
+   "checks": []
+  },
+  "H002": {
+   "name": "Продолжение после свипа",
+   "path": "hypotheses/H002-sweep-continuation.yaml",
+   "source": "Побочное наблюдение отчёта reports/nif_v1/REPORT.md (раздел 5): реверсия после свипа хуже случайного входа во всех 6 парах монета×ТФ, MAE систематически больше MFE. Этап 1: Osler (2003, 2005) — пробой скопления стопов запускает каскад рыночных ордеров и продолжение.\n",
+   "created": "2026-10-30",
+   "registered_at": "2026-10-30T09:00:49+00:00",
+   "fingerprint": "6438ca9532ed907f",
+   "lock": "3951b72e9ef68c53",
+   "status": "Testing",
+   "reason": "",
+   "holdout_used": false,
+   "checks": []
+  }
+ }
+}
