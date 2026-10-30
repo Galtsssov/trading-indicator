@@ -82,12 +82,12 @@
  {
   "dataset": "klines_1m",
   "symbol": "SOLUSDT",
-  "rows": 3210780,
+  "rows": 3212220,
   "first": "2020-09-14 07:00:00+00:00",
-  "last": "2026-10-27 23:59:00+00:00",
-  "expected_rows": 3217980,
-  "coverage_pct": 99.776,
-  "missing_rows": 7200,
+  "last": "2026-10-29 23:59:00+00:00",
+  "expected_rows": 3220860,
+  "coverage_pct": 99.732,
+  "missing_rows": 8640,
   "duplicates_dropped": 0,
   "largest_gaps": [
    [
@@ -97,6 +97,10 @@
    [
     "2022-03-31 23:59:00+00:00",
     "2 days 00:01:00"
+   ],
+   [
+    "2026-10-27 23:59:00+00:00",
+    "1 days 00:01:00"
    ]
   ],
   "issues": {

@@ -1,0 +1,208 @@
+cluster,size,representative,categories,mean_abs_rho,members
+33,14,mr_z_sma_96,"Mean Reversion (5), VWAP (4), Price Structure (3), Percentiles (1), Session (1)",0.802557917464301,"mr_dist_ema_48, mr_rsi_14, mr_rsi_48, mr_stoch_96, mr_z_sma_96, pc_close_96, ps_dist_high_96, ps_dist_low_96, ps_pos_range_96, ss_day_pos, vw_day_band_z, vw_day_dist, vw_day_slope_6, vw_roll_dist_96"
+159,14,vl_parkinson_96,"Volatility (12), BTC Context (1), ETH Context (1)",0.8009873085092987,"cx_btc_rv_96, cx_eth_rv_96, vl_garman_klass_24, vl_garman_klass_288, vl_parkinson_24, vl_parkinson_288, vl_parkinson_6, vl_parkinson_96, vl_rogers_satchell_24, vl_rogers_satchell_288, vl_rv_24, vl_rv_288, vl_rv_6, vl_rv_96"
+74,13,mo_ret_1,"Candle Geometry (4), Percentiles (3), Sequence (2), Z-Score (2), Cluster Features (1), Momentum (1)",0.8546226408109513,"cf_bar_shape, cg_body_atr, cg_body_range, cg_clv, cg_dir, mo_ret_1, pc_ret_288, pc_ret_8640, pc_ret_96, sq_down_streak, sq_up_streak, zs_ret_288, zs_ret_96"
+88,11,vw_roll_dist_24,"Mean Reversion (5), Price Structure (3), Momentum (2), VWAP (1)",0.8389722599504872,"mo_macd_hist, mo_ret_12, mr_cci_20, mr_dist_ema_12, mr_rsi_6, mr_stoch_14, mr_z_sma_24, ps_dist_high_24, ps_dist_low_24, ps_pos_range_24, vw_roll_dist_24"
+130,11,pc_volume_288,"Z-Score (4), Volume (3), Percentiles (2), Candle Geometry (1), Liquidity (1)",0.8116394104555108,"cg_range_atr, lq_trades_rel, pc_range_288, pc_volume_288, vo_rel_288, vo_rel_96, vo_z_288, zs_intrabar_rv_288, zs_range_288, zs_range_96, zs_trades_288"
+43,8,mr_z_sma_288,"Auction (2), Mean Reversion (2), Price Structure (2), Percentiles (1), VWAP (1)",0.8427253811129374,"au_prev_day_high_dist, au_prev_day_pos, mr_dist_ema_200, mr_z_sma_288, pc_close_288, ps_dist_high_288, ps_pos_range_288, vw_roll_dist_288"
+53,7,cv_slope_48,"Curvature (2), Acceleration (1), Momentum (1), Regime (1), Rolling Statistics (1), Volatility (1)",0.7844709127119333,"ac_ret_24, cv_quad_48, cv_slope_48, mo_ret_24, rg_trend_tstat_24, rl_drift_24, vl_semivar_ratio_24"
+81,7,mr_z_sma_6,"Price Structure (3), Candle Geometry (2), Momentum (1), Mean Reversion (1)",0.7834668192141232,"cg_body2_atr, cg_body3_atr, mo_ret_3, mr_z_sma_6, ps_dist_high_6, ps_dist_low_6, ps_pos_range_6"
+82,5,cv_slope_12,"Curvature (3), Acceleration (2)",0.8087652995909874,"ac_ema_slope_chg, ac_ret_6, cv_ema_second_diff, cv_quad_12, cv_slope_12"
+45,4,rl_drift_288,"Momentum (1), Regime (1), Rolling Statistics (1), Volume (1)",0.8582939366393717,"mo_ret_288, rg_trend_tstat_288, rl_drift_288, vo_up_share_288"
+103,4,tm_min_since_utc_midnight,"Session (2), Time (2)",0.8574259328536652,"ss_code, ss_min_since_asia_open, tm_hour_sin, tm_min_since_utc_midnight"
+38,4,rl_drift_96,"Momentum (1), Regime (1), Rolling Statistics (1), Volume (1)",0.8517319397041098,"mo_ret_96, rg_trend_tstat_96, rl_drift_96, vo_up_share_96"
+150,4,cx_eth_corr_288,"BTC Context (2), ETH Context (2)",0.8318001187861018,"cx_btc_corr_288, cx_btc_corr_96, cx_eth_corr_288, cx_eth_corr_96"
+176,4,st_kurt_288,"Volatility (2), Rolling Statistics (1), Statistical (1)",0.8291930001145347,"rl_median_abs_288, st_kurt_288, vl_jump_share_288, vl_vol_of_vol_288"
+15,4,cx_eth_spread_288,"Relative Strength (2), BTC Context (1), ETH Context (1)",0.8010535502706745,"cx_btc_spread_288, cx_eth_spread_288, rs_rank_288, rs_vs_basket_288"
+80,4,cx_eth_spread_6,"Relative Strength (2), BTC Context (1), ETH Context (1)",0.7994899878626619,"cx_btc_spread_6, cx_eth_spread_6, rs_rank_6, rs_vs_basket_6"
+58,4,cx_eth_spread_24,"Relative Strength (2), BTC Context (1), ETH Context (1)",0.7991689418033999,"cx_btc_spread_24, cx_eth_spread_24, rs_rank_24, rs_vs_basket_24"
+161,4,vl_atr_pctl_30d,"Volatility (3), Regime (1)",0.7640097207797015,"rg_vol, vl_atr_pctl_30d, vl_atr_pctl_7d, vl_atr_pctl_90d"
+3,3,cl_day_of_month,Calendar (3),0.981132947670892,"cl_day_of_month, cl_days_to_month_end, cl_week_of_month"
+192,3,st_autocorr1_288,"Liquidity (1), Regime (1), Statistical (1)",0.9449663382649139,"lq_roll_spread_288, rg_variance_ratio_2, st_autocorr1_288"
+34,3,ss_day_ret,"Auction (1), Gap (1), Session (1)",0.9134471095658984,"au_initial_balance_state, gp_prev_day_close_dist, ss_day_ret"
+140,3,ex_atr_ratio_14_100,"Expansion (1), Volatility (1), Volume (1)",0.8509323794256783,"ex_atr_ratio_14_100, vl_ratio_24_288, vo_trend"
+135,3,fr_scaling_6_24,"Fractal (2), Price Structure (1)",0.8307821192019351,"fr_katz_24, fr_scaling_6_24, ps_range_24"
+117,3,lq_depth_proxy_24,Liquidity (3),0.8302285927147359,"lq_depth_proxy_24, lq_depth_proxy_6, lq_depth_proxy_96"
+126,3,vo_z_24,Volume (3),0.8237549920295292,"vo_rel_24, vo_rel_6, vo_z_24"
+129,3,pc_volume_8640,"Percentiles (2), Volume (1)",0.8163040233127584,"pc_range_8640, pc_volume_8640, vo_time_of_day_rel"
+182,3,rg_efficiency_288,"Regime (2), Fractal (1)",0.7996861355124607,"fr_scaling_24_288, rg_efficiency_288, rg_efficiency_pctl"
+153,3,cx_eth_beta_96,ETH Context (3),0.7984142895927303,"cx_eth_beta_288, cx_eth_beta_96, cx_eth_vol_ratio"
+154,3,cx_btc_beta_96,BTC Context (3),0.7961718459242114,"cx_btc_beta_288, cx_btc_beta_96, cx_btc_vol_ratio"
+178,3,vl_vol_of_vol_96,"Rolling Statistics (1), Statistical (1), Volatility (1)",0.7958966456440911,"rl_median_abs_96, st_kurt_96, vl_vol_of_vol_96"
+50,3,st_skew_24,"Rolling Statistics (2), Statistical (1)",0.7652418629687379,"rl_max_r_24, rl_min_r_24, st_skew_24"
+122,3,ps_range_6,"Compression (1), Expansion (1), Price Structure (1)",0.7362146439126506,"cp_range_ratio_6, ex_atr_change_6, ps_range_6"
+107,2,ss_min_since_london_open,"Session (1), Time (1)",0.9999999999999997,"ss_min_since_london_open, tm_min_since_london_open"
+106,2,ss_min_since_ny_open,"Session (1), Time (1)",0.999999999999999,"ss_min_since_ny_open, tm_min_since_ny_open"
+128,2,mi_trade_size_z,"Liquidity (1), Microstructure Proxy (1)",0.9837461817604787,"lq_trade_size_rel, mi_trade_size_z"
+200,2,mo_consistency_24,"Entropy (1), Momentum (1)",0.9823632708475073,"en_sign_24, mo_consistency_24"
+72,2,of_taker_share,Order Flow Proxy (2),0.9719071086105812,"of_taker_share, of_taker_z_288"
+181,2,en_sign_96,"Entropy (1), Momentum (1)",0.9641503956320058,"en_sign_96, mo_consistency_96"
+197,2,st_autocorr1_24,"Liquidity (1), Statistical (1)",0.9541526071284242,"lq_roll_spread_24, st_autocorr1_24"
+102,2,au_value_width,"Auction (1), Session (1)",0.9501872344211972,"au_value_width, ss_day_range"
+191,2,st_autocorr1_96,"Liquidity (1), Statistical (1)",0.94072883486467,"lq_roll_spread_96, st_autocorr1_96"
+170,2,st_kurt_24,"Statistical (1), Volatility (1)",0.9210555367235943,"st_kurt_24, vl_jump_share_24"
+27,2,st_skew_288,"Statistical (1), Volatility (1)",0.8950028869604497,"st_skew_288, vl_semivar_ratio_288"
+155,2,lq_amihud_24,Liquidity (2),0.8906370907258753,"lq_amihud_24, lq_amihud_288"
+94,2,cg_lower_atr,Candle Geometry (2),0.8888927225516441,"cg_lower_atr, cg_lower_range"
+169,2,vo_concentration_24,"Entropy (1), Volume (1)",0.8872242133946844,"en_volume_24, vo_concentration_24"
+95,2,cg_upper_atr,Candle Geometry (2),0.8862975066745592,"cg_upper_atr, cg_upper_range"
+31,2,st_skew_96,"Statistical (1), Volatility (1)",0.8713402883946458,"st_skew_96, vl_semivar_ratio_96"
+194,2,st_sign_changes_96,"Entropy (1), Statistical (1)",0.8596915720255547,"en_permutation_96, st_sign_changes_96"
+193,2,rg_variance_ratio_4,Regime (2),0.8546963557556309,"rg_variance_ratio_4, rg_variance_ratio_8"
+73,2,cx_eth_ret_1,"BTC Context (1), ETH Context (1)",0.8391783734628311,"cx_btc_ret_1, cx_eth_ret_1"
+87,2,cx_btc_ret_6,"BTC Context (1), ETH Context (1)",0.8349989168360796,"cx_btc_ret_6, cx_eth_ret_6"
+52,2,cx_btc_ret_24,"BTC Context (1), ETH Context (1)",0.82850618648394,"cx_btc_ret_24, cx_eth_ret_24"
+79,2,cx_btc_resid_3,"BTC Context (1), ETH Context (1)",0.8272007214861498,"cx_btc_resid_3, cx_eth_resid_3"
+41,2,cx_btc_ret_288,"BTC Context (1), ETH Context (1)",0.8243932429281564,"cx_btc_ret_288, cx_eth_ret_288"
+112,2,cg_outside,Candle Geometry (2),0.8231442968213911,"cg_engulf, cg_outside"
+51,2,mo_up_frac_24,"Momentum (1), Volume (1)",0.8123275284987653,"mo_up_frac_24, vo_up_share_24"
+101,2,tm_us_dst,"Calendar (1), Time (1)",0.8074371523582009,"cl_month_cos, tm_us_dst"
+35,2,vw_day_slope_24,VWAP (2),0.7966440259374864,"vw_above_frac_24, vw_day_slope_24"
+125,2,cx_eth_vol_rel,"BTC Context (1), ETH Context (1)",0.7942766454558277,"cx_btc_vol_rel, cx_eth_vol_rel"
+21,2,gp_week_open_dist,"Gap (1), VWAP (1)",0.7918263598505572,"gp_week_open_dist, vw_week_dist"
+108,2,tm_dow_sin,Time (2),0.7907953474493131,"tm_dow_sin, tm_weekend"
+138,2,ex_atr_change_24,Expansion (2),0.7841765308525224,"ex_atr_change_24, ex_atr_ratio_5_50"
+68,2,cg_body_atr_lag2,Candle Geometry (2),0.7806861045987009,"cg_body_atr_lag2, cg_clv_lag2"
+134,2,of_effort_result_24,"Order Flow Proxy (1), Regime (1)",0.7788957602332308,"of_effort_result_24, rg_efficiency_24"
+76,2,cg_body_atr_lag1,Candle Geometry (2),0.7776533860338591,"cg_body_atr_lag1, cg_clv_lag1"
+83,2,ps_hh_minus_ll_6,"Momentum (1), Price Structure (1)",0.777289859849647,"mo_ret_6, ps_hh_minus_ll_6"
+44,2,ps_dist_low_288,"Auction (1), Price Structure (1)",0.7574334130301974,"au_prev_day_low_dist, ps_dist_low_288"
+115,2,cp_narrowest_4,Compression (2),0.7248596944112441,"cp_narrowest_4, cp_narrowest_7"
+42,2,mo_tsmom_1d,"Momentum (1), Regime (1)",0.72179520644312,"mo_tsmom_1d, rg_btc"
+146,2,cx_sol_beta_96,SOL Context (2),0.7210517883885229,"cx_sol_beta_96, cx_sol_vol_ratio"
+137,2,ps_range_96,"Compression (1), Price Structure (1)",0.7183797389487507,"cp_range_ratio_24, ps_range_96"
+187,2,fr_katz_96,"Fractal (1), Regime (1)",0.7165922947751899,"fr_katz_96, rg_efficiency_96"
+30,2,of_taker_share_288,Order Flow Proxy (2),0.7108082796510041,"of_taker_share_288, of_taker_share_96"
+66,2,ps_break_state_96,Price Structure (2),0.705459704605107,"ps_break_state_288, ps_break_state_96"
+1,1,tm_minute_cos,Time (1),1.0,tm_minute_cos
+2,1,tm_minute_sin,Time (1),1.0,tm_minute_sin
+4,1,cl_quarter_end_week,Calendar (1),1.0,cl_quarter_end_week
+5,1,po_oi_price_corr_288,Positioning (1),1.0,po_oi_price_corr_288
+6,1,po_oi_price_corr_96,Positioning (1),1.0,po_oi_price_corr_96
+7,1,po_oi_chg_288,Positioning (1),1.0,po_oi_chg_288
+8,1,po_oi_pctl_30d,Positioning (1),1.0,po_oi_pctl_30d
+9,1,po_oi_chg_1,Positioning (1),1.0,po_oi_chg_1
+10,1,po_oi_z_288,Positioning (1),1.0,po_oi_z_288
+11,1,po_oi_chg_24,Positioning (1),1.0,po_oi_chg_24
+12,1,po_oi_chg_6,Positioning (1),1.0,po_oi_chg_6
+13,1,po_funding_chg,Positioning (1),1.0,po_funding_chg
+14,1,po_funding_z_30d,Positioning (1),1.0,po_funding_z_30d
+16,1,rs_btc_ratio_trend,Relative Strength (1),1.0,rs_btc_ratio_trend
+17,1,cx_sol_ret_288,SOL Context (1),1.0,cx_sol_ret_288
+18,1,cx_sol_spread_288,SOL Context (1),1.0,cx_sol_spread_288
+19,1,ds_low_30d,Distance Metrics (1),1.0,ds_low_30d
+20,1,ds_low_7d,Distance Metrics (1),1.0,ds_low_7d
+22,1,ds_high_7d,Distance Metrics (1),1.0,ds_high_7d
+23,1,mo_tsmom_7d,Momentum (1),1.0,mo_tsmom_7d
+24,1,ds_high_30d,Distance Metrics (1),1.0,ds_high_30d
+25,1,rg_risk,Regime (1),1.0,rg_risk
+26,1,po_ls_accounts,Positioning (1),1.0,po_ls_accounts
+28,1,rl_min_r_288,Rolling Statistics (1),1.0,rl_min_r_288
+29,1,rl_max_r_288,Rolling Statistics (1),1.0,rl_max_r_288
+32,1,st_mean_median_96,Statistical (1),1.0,st_mean_median_96
+36,1,mo_up_frac_96,Momentum (1),1.0,mo_up_frac_96
+37,1,ps_hh_minus_ll_96,Price Structure (1),1.0,ps_hh_minus_ll_96
+39,1,ps_age_high_96,Price Structure (1),1.0,ps_age_high_96
+40,1,ps_age_low_96,Price Structure (1),1.0,ps_age_low_96
+46,1,ps_age_high_288,Price Structure (1),1.0,ps_age_high_288
+47,1,ps_hh_minus_ll_288,Price Structure (1),1.0,ps_hh_minus_ll_288
+48,1,ps_age_low_288,Price Structure (1),1.0,ps_age_low_288
+49,1,vw_above_frac_96,VWAP (1),1.0,vw_above_frac_96
+54,1,ps_hh_minus_ll_24,Price Structure (1),1.0,ps_hh_minus_ll_24
+55,1,ps_age_high_24,Price Structure (1),1.0,ps_age_high_24
+56,1,ps_age_low_24,Price Structure (1),1.0,ps_age_low_24
+57,1,of_taker_share_24,Order Flow Proxy (1),1.0,of_taker_share_24
+59,1,cx_sol_ret_24,SOL Context (1),1.0,cx_sol_ret_24
+60,1,cx_sol_spread_24,SOL Context (1),1.0,cx_sol_spread_24
+61,1,of_delta_price_gap_24,Order Flow Proxy (1),1.0,of_delta_price_gap_24
+62,1,au_poc_dist,Auction (1),1.0,au_poc_dist
+63,1,po_ls_accounts_chg_24,Positioning (1),1.0,po_ls_accounts_chg_24
+64,1,cx_sol_ret_6,SOL Context (1),1.0,cx_sol_ret_6
+65,1,cx_sol_spread_6,SOL Context (1),1.0,cx_sol_spread_6
+67,1,ps_break_state_24,Price Structure (1),1.0,ps_break_state_24
+69,1,sq_pattern3,Sequence (1),1.0,sq_pattern3
+70,1,ac_ret_3,Acceleration (1),1.0,ac_ret_3
+71,1,cx_sol_resid_3,SOL Context (1),1.0,cx_sol_resid_3
+75,1,cx_sol_ret_1,SOL Context (1),1.0,cx_sol_ret_1
+77,1,sq_higher_high_streak,Sequence (1),1.0,sq_higher_high_streak
+78,1,sq_lower_low_streak,Sequence (1),1.0,sq_lower_low_streak
+84,1,mo_up_frac_6,Momentum (1),1.0,mo_up_frac_6
+85,1,ps_age_high_6,Price Structure (1),1.0,ps_age_high_6
+86,1,ps_age_low_6,Price Structure (1),1.0,ps_age_low_6
+89,1,cf_flow_state,Cluster Features (1),1.0,cf_flow_state
+90,1,of_taker_share_6,Order Flow Proxy (1),1.0,of_taker_share_6
+91,1,po_taker_ls_ratio,Positioning (1),1.0,po_taker_ls_ratio
+92,1,mi_jumpiness,Microstructure Proxy (1),1.0,mi_jumpiness
+93,1,mi_max_minute_volume,Microstructure Proxy (1),1.0,mi_max_minute_volume
+96,1,cg_small_body,Candle Geometry (1),1.0,cg_small_body
+97,1,mi_path_efficiency,Microstructure Proxy (1),1.0,mi_path_efficiency
+98,1,cg_full_body,Candle Geometry (1),1.0,cg_full_body
+99,1,mi_last_minute_volume,Microstructure Proxy (1),1.0,mi_last_minute_volume
+100,1,mi_sign_change_rate,Microstructure Proxy (1),1.0,mi_sign_change_rate
+104,1,vw_crosses_24,VWAP (1),1.0,vw_crosses_24
+105,1,tm_min_to_funding,Time (1),1.0,tm_min_to_funding
+109,1,cl_hours_to_weekly_expiry,Calendar (1),1.0,cl_hours_to_weekly_expiry
+110,1,cl_last_friday,Calendar (1),1.0,cl_last_friday
+111,1,tm_dow_cos,Time (1),1.0,tm_dow_cos
+113,1,cg_inside,Candle Geometry (1),1.0,cg_inside
+114,1,cg_overlap_prev,Candle Geometry (1),1.0,cg_overlap_prev
+116,1,ex_expanding_streak,Expansion (1),1.0,ex_expanding_streak
+118,1,mi_impact_per_volume_24,Microstructure Proxy (1),1.0,mi_impact_per_volume_24
+119,1,tm_hour_cos,Time (1),1.0,tm_hour_cos
+120,1,of_effort_result_6,Order Flow Proxy (1),1.0,of_effort_result_6
+121,1,rg_efficiency_6,Regime (1),1.0,rg_efficiency_6
+123,1,ac_vol,Acceleration (1),1.0,ac_vol
+124,1,cg_range_atr_lag1,Candle Geometry (1),1.0,cg_range_atr_lag1
+127,1,mi_intrabar_rv,Microstructure Proxy (1),1.0,mi_intrabar_rv
+131,1,cx_sol_vol_rel,SOL Context (1),1.0,cx_sol_vol_rel
+132,1,au_acceptance_24,Auction (1),1.0,au_acceptance_24
+133,1,au_acceptance_96,Auction (1),1.0,au_acceptance_96
+136,1,cp_squeeze,Compression (1),1.0,cp_squeeze
+139,1,vl_ratio_6_96,Volatility (1),1.0,vl_ratio_6_96
+141,1,ps_range_288,Price Structure (1),1.0,ps_range_288
+142,1,rg_adx_14,Regime (1),1.0,rg_adx_14
+143,1,mi_path_efficiency_24,Microstructure Proxy (1),1.0,mi_path_efficiency_24
+144,1,mi_signature_24,Microstructure Proxy (1),1.0,mi_signature_24
+145,1,mi_signature_288,Microstructure Proxy (1),1.0,mi_signature_288
+147,1,cx_sol_beta_288,SOL Context (1),1.0,cx_sol_beta_288
+148,1,ds_drawdown_from_max,Distance Metrics (1),1.0,ds_drawdown_from_max
+149,1,po_funding,Positioning (1),1.0,po_funding
+151,1,cx_sol_corr_288,SOL Context (1),1.0,cx_sol_corr_288
+152,1,cx_sol_corr_96,SOL Context (1),1.0,cx_sol_corr_96
+156,1,gp_max_gap_288,Gap (1),1.0,gp_max_gap_288
+157,1,ds_round_major,Distance Metrics (1),1.0,ds_round_major
+158,1,ds_round_minor,Distance Metrics (1),1.0,ds_round_minor
+160,1,cx_sol_rv_96,SOL Context (1),1.0,cx_sol_rv_96
+162,1,cp_bb_width_pctl,Compression (1),1.0,cp_bb_width_pctl
+163,1,ex_days_since_high_vol,Expansion (1),1.0,ex_days_since_high_vol
+164,1,cp_days_since_low_vol,Compression (1),1.0,cp_days_since_low_vol
+165,1,cf_vol_state,Cluster Features (1),1.0,cf_vol_state
+166,1,lq_zero_ret_frac_24,Liquidity (1),1.0,lq_zero_ret_frac_24
+167,1,lq_zero_ret_frac_288,Liquidity (1),1.0,lq_zero_ret_frac_288
+168,1,cl_month_sin,Calendar (1),1.0,cl_month_sin
+171,1,en_abs_return_24,Entropy (1),1.0,en_abs_return_24
+172,1,vo_absr_corr_288,Volume (1),1.0,vo_absr_corr_288
+173,1,vo_absr_corr_96,Volume (1),1.0,vo_absr_corr_96
+174,1,of_delta_ret_corr_288,Order Flow Proxy (1),1.0,of_delta_ret_corr_288
+175,1,of_delta_ret_corr_96,Order Flow Proxy (1),1.0,of_delta_ret_corr_96
+177,1,vo_concentration_288,Volume (1),1.0,vo_concentration_288
+179,1,en_abs_return_96,Entropy (1),1.0,en_abs_return_96
+180,1,en_volume_96,Entropy (1),1.0,en_volume_96
+183,1,rg_trend,Regime (1),1.0,rg_trend
+184,1,mi_impact_per_volume_288,Microstructure Proxy (1),1.0,mi_impact_per_volume_288
+185,1,cx_btc_er_96,BTC Context (1),1.0,cx_btc_er_96
+186,1,cx_eth_er_96,ETH Context (1),1.0,cx_eth_er_96
+188,1,cp_range_ratio_96,Compression (1),1.0,cp_range_ratio_96
+189,1,cx_sol_er_96,SOL Context (1),1.0,cx_sol_er_96
+190,1,mr_half_life_288,Mean Reversion (1),1.0,mr_half_life_288
+195,1,en_permutation_288,Entropy (1),1.0,en_permutation_288
+196,1,sq_max_run_96,Sequence (1),1.0,sq_max_run_96
+198,1,lq_ar_spread,Liquidity (1),1.0,lq_ar_spread
+199,1,lq_cs_spread,Liquidity (1),1.0,lq_cs_spread
+201,1,en_permutation_24,Entropy (1),1.0,en_permutation_24
+202,1,st_sign_changes_24,Statistical (1),1.0,st_sign_changes_24
+203,1,sq_max_run_24,Sequence (1),1.0,sq_max_run_24
+204,1,fr_swing_density_288,Fractal (1),1.0,fr_swing_density_288
+205,1,fr_swing_density_96,Fractal (1),1.0,fr_swing_density_96
+206,1,st_autocorr2_288,Statistical (1),1.0,st_autocorr2_288
+207,1,gp_open_gap,Gap (1),1.0,gp_open_gap

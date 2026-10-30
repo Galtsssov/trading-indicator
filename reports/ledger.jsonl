@@ -1,3 +1,4 @@
 {"time": "2026-10-30T08:34:49.830600+00:00", "study": "nif_v1", "config_hash": "f3e49343c8cd", "data_hash": "c7ee8861e928", "git_commit": "9bf3969", "n_runs": 30, "supported": false}
 {"time": "2026-10-30T09:16:10+00:00", "event": "discover", "git_commit": "4be8a14", "tests": 5745, "significant": 52, "robust": 0, "registered": [], "report": "reports/discovery/20261030T091442/REPORT.md"}
 {"time": "2026-10-30T09:16:20+00:00", "event": "test", "git_commit": "4be8a14", "id": "H002", "split": "validation", "passed": false, "report": "reports/checks/H002/validation-20261030T091620.md", "status": "Rejected"}
+{"time": "2026-10-30T10:03:42+00:00", "event": "factory", "git_commit": "a4c10fc", "report": "reports/factory/REPORT.md"}

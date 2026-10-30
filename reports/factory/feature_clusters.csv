@@ -1,0 +1,387 @@
+,cluster,id,category
+ac_ema_slope_chg,82,AC004,Acceleration
+ac_ret_24,53,AC003,Acceleration
+ac_ret_3,70,AC001,Acceleration
+ac_ret_6,82,AC002,Acceleration
+ac_vol,123,AC005,Acceleration
+au_acceptance_24,132,AU001,Auction
+au_acceptance_96,133,AU002,Auction
+au_initial_balance_state,34,AU007,Auction
+au_poc_dist,62,AU006,Auction
+au_prev_day_high_dist,43,AU004,Auction
+au_prev_day_low_dist,44,AU005,Auction
+au_prev_day_pos,43,AU003,Auction
+au_value_width,102,AU008,Auction
+cf_bar_shape,74,CF001,Cluster Features
+cf_flow_state,89,CF003,Cluster Features
+cf_vol_state,165,CF002,Cluster Features
+cg_body2_atr,81,CG009,Candle Geometry
+cg_body3_atr,81,CG010,Candle Geometry
+cg_body_atr,74,CG005,Candle Geometry
+cg_body_atr_lag1,76,CG018,Candle Geometry
+cg_body_atr_lag2,68,CG019,Candle Geometry
+cg_body_range,74,CG001,Candle Geometry
+cg_clv,74,CG004,Candle Geometry
+cg_clv_lag1,76,CG020,Candle Geometry
+cg_clv_lag2,68,CG021,Candle Geometry
+cg_dir,74,CG012,Candle Geometry
+cg_engulf,112,CG015,Candle Geometry
+cg_full_body,98,CG017,Candle Geometry
+cg_inside,113,CG013,Candle Geometry
+cg_lower_atr,94,CG008,Candle Geometry
+cg_lower_range,94,CG003,Candle Geometry
+cg_outside,112,CG014,Candle Geometry
+cg_overlap_prev,114,CG011,Candle Geometry
+cg_range_atr,130,CG006,Candle Geometry
+cg_range_atr_lag1,124,CG022,Candle Geometry
+cg_small_body,96,CG016,Candle Geometry
+cg_upper_atr,95,CG007,Candle Geometry
+cg_upper_range,95,CG002,Candle Geometry
+cl_day_of_month,3,CL001,Calendar
+cl_days_to_month_end,3,CL002,Calendar
+cl_hours_to_weekly_expiry,109,CL006,Calendar
+cl_last_friday,110,CL007,Calendar
+cl_month_cos,101,CL004,Calendar
+cl_month_sin,168,CL003,Calendar
+cl_quarter_end_week,4,CL005,Calendar
+cl_week_of_month,3,CL008,Calendar
+cp_bb_width_pctl,162,CP001,Compression
+cp_days_since_low_vol,164,CP007,Compression
+cp_narrowest_4,115,CP005,Compression
+cp_narrowest_7,115,CP006,Compression
+cp_range_ratio_24,137,CP003,Compression
+cp_range_ratio_6,122,CP002,Compression
+cp_range_ratio_96,188,CP004,Compression
+cp_squeeze,136,CP008,Compression
+cv_ema_second_diff,82,CV005,Curvature
+cv_quad_12,82,CV001,Curvature
+cv_quad_48,53,CV002,Curvature
+cv_slope_12,82,CV003,Curvature
+cv_slope_48,53,CV004,Curvature
+cx_btc_beta_288,154,CB009,BTC Context
+cx_btc_beta_96,154,CB008,BTC Context
+cx_btc_corr_288,150,CB011,BTC Context
+cx_btc_corr_96,150,CB010,BTC Context
+cx_btc_er_96,185,CB015,BTC Context
+cx_btc_resid_3,79,CB012,BTC Context
+cx_btc_ret_1,73,CB001,BTC Context
+cx_btc_ret_24,52,CB003,BTC Context
+cx_btc_ret_288,41,CB004,BTC Context
+cx_btc_ret_6,87,CB002,BTC Context
+cx_btc_rv_96,159,CB014,BTC Context
+cx_btc_spread_24,58,CB006,BTC Context
+cx_btc_spread_288,15,CB007,BTC Context
+cx_btc_spread_6,80,CB005,BTC Context
+cx_btc_vol_ratio,154,CB013,BTC Context
+cx_btc_vol_rel,125,CB016,BTC Context
+cx_eth_beta_288,153,CE009,ETH Context
+cx_eth_beta_96,153,CE008,ETH Context
+cx_eth_corr_288,150,CE011,ETH Context
+cx_eth_corr_96,150,CE010,ETH Context
+cx_eth_er_96,186,CE015,ETH Context
+cx_eth_resid_3,79,CE012,ETH Context
+cx_eth_ret_1,73,CE001,ETH Context
+cx_eth_ret_24,52,CE003,ETH Context
+cx_eth_ret_288,41,CE004,ETH Context
+cx_eth_ret_6,87,CE002,ETH Context
+cx_eth_rv_96,159,CE014,ETH Context
+cx_eth_spread_24,58,CE006,ETH Context
+cx_eth_spread_288,15,CE007,ETH Context
+cx_eth_spread_6,80,CE005,ETH Context
+cx_eth_vol_ratio,153,CE013,ETH Context
+cx_eth_vol_rel,125,CE016,ETH Context
+cx_sol_beta_288,147,CS009,SOL Context
+cx_sol_beta_96,146,CS008,SOL Context
+cx_sol_corr_288,151,CS011,SOL Context
+cx_sol_corr_96,152,CS010,SOL Context
+cx_sol_er_96,189,CS015,SOL Context
+cx_sol_resid_3,71,CS012,SOL Context
+cx_sol_ret_1,75,CS001,SOL Context
+cx_sol_ret_24,59,CS003,SOL Context
+cx_sol_ret_288,17,CS004,SOL Context
+cx_sol_ret_6,64,CS002,SOL Context
+cx_sol_rv_96,160,CS014,SOL Context
+cx_sol_spread_24,60,CS006,SOL Context
+cx_sol_spread_288,18,CS007,SOL Context
+cx_sol_spread_6,65,CS005,SOL Context
+cx_sol_vol_ratio,146,CS013,SOL Context
+cx_sol_vol_rel,131,CS016,SOL Context
+ds_drawdown_from_max,148,DS007,Distance Metrics
+ds_high_30d,24,DS005,Distance Metrics
+ds_high_7d,22,DS003,Distance Metrics
+ds_low_30d,19,DS006,Distance Metrics
+ds_low_7d,20,DS004,Distance Metrics
+ds_round_major,157,DS001,Distance Metrics
+ds_round_minor,158,DS002,Distance Metrics
+en_abs_return_24,171,EN008,Entropy
+en_abs_return_96,179,EN009,Entropy
+en_permutation_24,201,EN003,Entropy
+en_permutation_288,195,EN005,Entropy
+en_permutation_96,194,EN004,Entropy
+en_sign_24,200,EN001,Entropy
+en_sign_96,181,EN002,Entropy
+en_volume_24,169,EN006,Entropy
+en_volume_96,180,EN007,Entropy
+ex_atr_change_24,138,EX004,Expansion
+ex_atr_change_6,122,EX003,Expansion
+ex_atr_ratio_14_100,140,EX002,Expansion
+ex_atr_ratio_5_50,138,EX001,Expansion
+ex_days_since_high_vol,163,EX006,Expansion
+ex_expanding_streak,116,EX005,Expansion
+fr_katz_24,135,FR001,Fractal
+fr_katz_96,187,FR002,Fractal
+fr_scaling_24_288,182,FR006,Fractal
+fr_scaling_6_24,135,FR005,Fractal
+fr_swing_density_288,204,FR004,Fractal
+fr_swing_density_96,205,FR003,Fractal
+gp_max_gap_288,156,GP002,Gap
+gp_open_gap,207,GP001,Gap
+gp_prev_day_close_dist,34,GP003,Gap
+gp_week_open_dist,21,GP004,Gap
+lq_amihud_24,155,LQ001,Liquidity
+lq_amihud_288,155,LQ002,Liquidity
+lq_ar_spread,198,LQ012,Liquidity
+lq_cs_spread,199,LQ011,Liquidity
+lq_depth_proxy_24,117,LQ004,Liquidity
+lq_depth_proxy_6,117,LQ003,Liquidity
+lq_depth_proxy_96,117,LQ005,Liquidity
+lq_roll_spread_24,197,LQ008,Liquidity
+lq_roll_spread_288,192,LQ010,Liquidity
+lq_roll_spread_96,191,LQ009,Liquidity
+lq_trade_size_rel,128,LQ007,Liquidity
+lq_trades_rel,130,LQ006,Liquidity
+lq_zero_ret_frac_24,166,LQ013,Liquidity
+lq_zero_ret_frac_288,167,LQ014,Liquidity
+mi_impact_per_volume_24,118,MI010,Microstructure Proxy
+mi_impact_per_volume_288,184,MI011,Microstructure Proxy
+mi_intrabar_rv,127,MI001,Microstructure Proxy
+mi_jumpiness,92,MI007,Microstructure Proxy
+mi_last_minute_volume,99,MI008,Microstructure Proxy
+mi_max_minute_volume,93,MI009,Microstructure Proxy
+mi_path_efficiency,97,MI004,Microstructure Proxy
+mi_path_efficiency_24,143,MI005,Microstructure Proxy
+mi_sign_change_rate,100,MI006,Microstructure Proxy
+mi_signature_24,144,MI002,Microstructure Proxy
+mi_signature_288,145,MI003,Microstructure Proxy
+mi_trade_size_z,128,MI012,Microstructure Proxy
+mo_consistency_24,200,MO014,Momentum
+mo_consistency_96,181,MO015,Momentum
+mo_macd_hist,88,MO011,Momentum
+mo_ret_1,74,MO001,Momentum
+mo_ret_12,88,MO004,Momentum
+mo_ret_24,53,MO005,Momentum
+mo_ret_288,45,MO007,Momentum
+mo_ret_3,81,MO002,Momentum
+mo_ret_6,83,MO003,Momentum
+mo_ret_96,38,MO006,Momentum
+mo_tsmom_1d,42,MO012,Momentum
+mo_tsmom_7d,23,MO013,Momentum
+mo_up_frac_24,51,MO009,Momentum
+mo_up_frac_6,84,MO008,Momentum
+mo_up_frac_96,36,MO010,Momentum
+mr_cci_20,88,MR013,Mean Reversion
+mr_dist_ema_12,88,MR005,Mean Reversion
+mr_dist_ema_200,43,MR007,Mean Reversion
+mr_dist_ema_48,33,MR006,Mean Reversion
+mr_half_life_288,190,MR014,Mean Reversion
+mr_rsi_14,33,MR009,Mean Reversion
+mr_rsi_48,33,MR010,Mean Reversion
+mr_rsi_6,88,MR008,Mean Reversion
+mr_stoch_14,88,MR011,Mean Reversion
+mr_stoch_96,33,MR012,Mean Reversion
+mr_z_sma_24,88,MR002,Mean Reversion
+mr_z_sma_288,43,MR004,Mean Reversion
+mr_z_sma_6,81,MR001,Mean Reversion
+mr_z_sma_96,33,MR003,Mean Reversion
+of_delta_price_gap_24,61,OF011,Order Flow Proxy
+of_delta_ret_corr_288,174,OF008,Order Flow Proxy
+of_delta_ret_corr_96,175,OF007,Order Flow Proxy
+of_effort_result_24,134,OF010,Order Flow Proxy
+of_effort_result_6,120,OF009,Order Flow Proxy
+of_taker_share,72,OF001,Order Flow Proxy
+of_taker_share_24,57,OF003,Order Flow Proxy
+of_taker_share_288,30,OF005,Order Flow Proxy
+of_taker_share_6,90,OF002,Order Flow Proxy
+of_taker_share_96,30,OF004,Order Flow Proxy
+of_taker_z_288,72,OF006,Order Flow Proxy
+pc_close_288,43,PC009,Percentiles
+pc_close_96,33,PC008,Percentiles
+pc_range_288,130,PC004,Percentiles
+pc_range_8640,129,PC005,Percentiles
+pc_ret_288,74,PC002,Percentiles
+pc_ret_8640,74,PC003,Percentiles
+pc_ret_96,74,PC001,Percentiles
+pc_volume_288,130,PC006,Percentiles
+pc_volume_8640,129,PC007,Percentiles
+po_funding,149,PO009,Positioning
+po_funding_chg,13,PO011,Positioning
+po_funding_z_30d,14,PO010,Positioning
+po_ls_accounts,26,PO012,Positioning
+po_ls_accounts_chg_24,63,PO013,Positioning
+po_oi_chg_1,9,PO001,Positioning
+po_oi_chg_24,11,PO003,Positioning
+po_oi_chg_288,7,PO004,Positioning
+po_oi_chg_6,12,PO002,Positioning
+po_oi_pctl_30d,8,PO008,Positioning
+po_oi_price_corr_288,5,PO007,Positioning
+po_oi_price_corr_96,6,PO006,Positioning
+po_oi_z_288,10,PO005,Positioning
+po_taker_ls_ratio,91,PO014,Positioning
+ps_age_high_24,55,PS014,Price Structure
+ps_age_high_288,46,PS016,Price Structure
+ps_age_high_6,85,PS013,Price Structure
+ps_age_high_96,39,PS015,Price Structure
+ps_age_low_24,56,PS018,Price Structure
+ps_age_low_288,48,PS020,Price Structure
+ps_age_low_6,86,PS017,Price Structure
+ps_age_low_96,40,PS019,Price Structure
+ps_break_state_24,67,PS029,Price Structure
+ps_break_state_288,66,PS031,Price Structure
+ps_break_state_96,66,PS030,Price Structure
+ps_dist_high_24,88,PS006,Price Structure
+ps_dist_high_288,43,PS008,Price Structure
+ps_dist_high_6,81,PS005,Price Structure
+ps_dist_high_96,33,PS007,Price Structure
+ps_dist_low_24,88,PS010,Price Structure
+ps_dist_low_288,44,PS012,Price Structure
+ps_dist_low_6,81,PS009,Price Structure
+ps_dist_low_96,33,PS011,Price Structure
+ps_hh_minus_ll_24,54,PS026,Price Structure
+ps_hh_minus_ll_288,47,PS028,Price Structure
+ps_hh_minus_ll_6,83,PS025,Price Structure
+ps_hh_minus_ll_96,37,PS027,Price Structure
+ps_pos_range_24,88,PS002,Price Structure
+ps_pos_range_288,43,PS004,Price Structure
+ps_pos_range_6,81,PS001,Price Structure
+ps_pos_range_96,33,PS003,Price Structure
+ps_range_24,135,PS022,Price Structure
+ps_range_288,141,PS024,Price Structure
+ps_range_6,122,PS021,Price Structure
+ps_range_96,137,PS023,Price Structure
+rg_adx_14,142,RG016,Regime
+rg_btc,42,RG003,Regime
+rg_efficiency_24,134,RG006,Regime
+rg_efficiency_288,182,RG008,Regime
+rg_efficiency_6,121,RG005,Regime
+rg_efficiency_96,187,RG007,Regime
+rg_efficiency_pctl,182,RG009,Regime
+rg_risk,25,RG004,Regime
+rg_trend,183,RG001,Regime
+rg_trend_tstat_24,53,RG013,Regime
+rg_trend_tstat_288,45,RG015,Regime
+rg_trend_tstat_96,38,RG014,Regime
+rg_variance_ratio_2,192,RG010,Regime
+rg_variance_ratio_4,193,RG011,Regime
+rg_variance_ratio_8,193,RG012,Regime
+rg_vol,161,RG002,Regime
+rl_drift_24,53,RL001,Rolling Statistics
+rl_drift_288,45,RL003,Rolling Statistics
+rl_drift_96,38,RL002,Rolling Statistics
+rl_max_r_24,50,RL006,Rolling Statistics
+rl_max_r_288,29,RL007,Rolling Statistics
+rl_median_abs_288,176,RL005,Rolling Statistics
+rl_median_abs_96,178,RL004,Rolling Statistics
+rl_min_r_24,50,RL008,Rolling Statistics
+rl_min_r_288,28,RL009,Rolling Statistics
+rs_btc_ratio_trend,16,RS007,Relative Strength
+rs_rank_24,58,RS002,Relative Strength
+rs_rank_288,15,RS003,Relative Strength
+rs_rank_6,80,RS001,Relative Strength
+rs_vs_basket_24,58,RS005,Relative Strength
+rs_vs_basket_288,15,RS006,Relative Strength
+rs_vs_basket_6,80,RS004,Relative Strength
+sq_down_streak,74,SQ002,Sequence
+sq_higher_high_streak,77,SQ006,Sequence
+sq_lower_low_streak,78,SQ007,Sequence
+sq_max_run_24,203,SQ004,Sequence
+sq_max_run_96,196,SQ005,Sequence
+sq_pattern3,69,SQ003,Sequence
+sq_up_streak,74,SQ001,Sequence
+ss_code,103,SS001,Session
+ss_day_pos,33,SS003,Session
+ss_day_range,102,SS002,Session
+ss_day_ret,34,SS004,Session
+ss_min_since_asia_open,103,SS005,Session
+ss_min_since_london_open,107,SS006,Session
+ss_min_since_ny_open,106,SS007,Session
+st_autocorr1_24,197,ST007,Statistical
+st_autocorr1_288,192,ST009,Statistical
+st_autocorr1_96,191,ST008,Statistical
+st_autocorr2_288,206,ST010,Statistical
+st_kurt_24,170,ST004,Statistical
+st_kurt_288,176,ST006,Statistical
+st_kurt_96,178,ST005,Statistical
+st_mean_median_96,32,ST013,Statistical
+st_sign_changes_24,202,ST011,Statistical
+st_sign_changes_96,194,ST012,Statistical
+st_skew_24,50,ST001,Statistical
+st_skew_288,27,ST003,Statistical
+st_skew_96,31,ST002,Statistical
+tm_dow_cos,111,TM006,Time
+tm_dow_sin,108,TM005,Time
+tm_hour_cos,119,TM002,Time
+tm_hour_sin,103,TM001,Time
+tm_min_since_london_open,107,TM011,Time
+tm_min_since_ny_open,106,TM010,Time
+tm_min_since_utc_midnight,103,TM009,Time
+tm_min_to_funding,105,TM008,Time
+tm_minute_cos,1,TM004,Time
+tm_minute_sin,2,TM003,Time
+tm_us_dst,101,TM012,Time
+tm_weekend,108,TM007,Time
+vl_atr_pctl_30d,161,VL016,Volatility
+vl_atr_pctl_7d,161,VL015,Volatility
+vl_atr_pctl_90d,161,VL017,Volatility
+vl_garman_klass_24,159,VL009,Volatility
+vl_garman_klass_288,159,VL010,Volatility
+vl_jump_share_24,170,VL023,Volatility
+vl_jump_share_288,176,VL024,Volatility
+vl_parkinson_24,159,VL006,Volatility
+vl_parkinson_288,159,VL008,Volatility
+vl_parkinson_6,159,VL005,Volatility
+vl_parkinson_96,159,VL007,Volatility
+vl_ratio_24_288,140,VL014,Volatility
+vl_ratio_6_96,139,VL013,Volatility
+vl_rogers_satchell_24,159,VL011,Volatility
+vl_rogers_satchell_288,159,VL012,Volatility
+vl_rv_24,159,VL002,Volatility
+vl_rv_288,159,VL004,Volatility
+vl_rv_6,159,VL001,Volatility
+vl_rv_96,159,VL003,Volatility
+vl_semivar_ratio_24,53,VL018,Volatility
+vl_semivar_ratio_288,27,VL020,Volatility
+vl_semivar_ratio_96,31,VL019,Volatility
+vl_vol_of_vol_288,176,VL022,Volatility
+vl_vol_of_vol_96,178,VL021,Volatility
+vo_absr_corr_288,172,VO013,Volume
+vo_absr_corr_96,173,VO012,Volume
+vo_concentration_24,169,VO014,Volume
+vo_concentration_288,177,VO015,Volume
+vo_rel_24,126,VO002,Volume
+vo_rel_288,130,VO004,Volume
+vo_rel_6,126,VO001,Volume
+vo_rel_96,130,VO003,Volume
+vo_time_of_day_rel,129,VO008,Volume
+vo_trend,140,VO007,Volume
+vo_up_share_24,51,VO009,Volume
+vo_up_share_288,45,VO011,Volume
+vo_up_share_96,38,VO010,Volume
+vo_z_24,126,VO005,Volume
+vo_z_288,130,VO006,Volume
+vw_above_frac_24,35,VW009,VWAP
+vw_above_frac_96,49,VW010,VWAP
+vw_crosses_24,104,VW011,VWAP
+vw_day_band_z,33,VW003,VWAP
+vw_day_dist,33,VW001,VWAP
+vw_day_slope_24,35,VW008,VWAP
+vw_day_slope_6,33,VW007,VWAP
+vw_roll_dist_24,88,VW004,VWAP
+vw_roll_dist_288,43,VW006,VWAP
+vw_roll_dist_96,33,VW005,VWAP
+vw_week_dist,21,VW002,VWAP
+zs_intrabar_rv_288,130,ZS006,Z-Score
+zs_range_288,130,ZS004,Z-Score
+zs_range_96,130,ZS003,Z-Score
+zs_ret_288,74,ZS002,Z-Score
+zs_ret_96,74,ZS001,Z-Score
+zs_trades_288,130,ZS005,Z-Score
