@@ -128,8 +128,8 @@ def run(cfg, data, out: Path, threshold: float = 0.95, cluster_rho: float = 0.7,
          f"Данные: training {start.date()} — {end.date()}, {len(mats)} пар монета × ТФ, до {max_rows} баров на пару "
          "(первый месяц пропущен — прогрев окон). Validation и holdout не использовались.\n",
          "## Итог\n",
-         md.table(["Признаков в каталоге", "Вырожденных", "Дублей (|ρ| ≥ %.2f)" % threshold, "Ядро (уникальные)",
-                   f"Кластеров (|ρ| ≥ {cluster_rho})", "Из них одиночек"],
+         md.table(["Признаков в каталоге", "Вырожденных", "Дублей (\\|ρ\\| ≥ %.2f)" % threshold, "Ядро (уникальные)",
+                   f"Кластеров (\\|ρ\\| ≥ {cluster_rho})", "Из них одиночек"],
                   [[len(all_names), len(degenerate), len(dropped), len(kept), len(cl), int((cl['size'] == 1).sum())]]) + "\n",
          "Ядро — `core_features.json`: признаки, из которых собираются гипотезы. Удалённые дубли можно "
          "использовать, но они не несут новой информации.\n",
@@ -139,12 +139,12 @@ def run(cfg, data, out: Path, threshold: float = 0.95, cluster_rho: float = 0.7,
          "Вырожденные в отдельных парах (например, контекст монеты для самой себя — NaN по определению):\n",
          "\n".join(f"- {k}: {len(v)}" for k, v in degenerate_by_pair.items()) + "\n",
          "## Дубли: что удалено и чем заменяется\n",
-         md.table(["Удалён", "Оставлен вместо него", "|ρ|"],
+         md.table(["Удалён", "Оставлен вместо него", "\\|ρ\\|"],
                   [[f"`{r.feature}`", f"`{r.twin}`", md.f(r.abs_rho)] for r in dropped.itertuples()]) + "\n",
          f"## Кластеры: какие признаки описывают одно и то же (|ρ| ≥ {cluster_rho} в среднем)\n",
          f"Кластеров из нескольких признаков: {len(multi)}; из них смешивают разные категории: {len(cross)} — "
          "это места, где разные «идеи» на деле измеряют одно и то же.\n",
-         md.table(["#", "Размер", "Средний |ρ|", "Представитель", "Категории", "Состав"],
+         md.table(["#", "Размер", "Средний \\|ρ\\|", "Представитель", "Категории", "Состав"],
                   [[r.cluster, r.size, md.f(r.mean_abs_rho), f"`{r.representative}`", r.categories,
                     r.members if len(r.members) < 400 else r.members[:400] + " …"] for r in multi.itertuples()]) + "\n"]
     path = out / "REPORT.md"
