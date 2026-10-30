@@ -1,0 +1,59 @@
+# Этап 2.1: проверка главной гипотезы (NIF) — свипы с ростом OI против свипов с падением OI.
+# Все параметры зафиксированы ДО первого запуска на реальных данных (пререгистрация).
+# Менять их после просмотра результатов = p-hacking. Новая идея = новый конфиг и запись в журнале.
+
+[data]
+dir = "data"
+symbols = ["ETHUSDT", "SOLUSDT", "BTCUSDT"]
+btc_symbol = "BTCUSDT"
+start = "2020-01"               # грузим с запасом; реальное начало истории определит отчёт о качестве
+base_url = "https://data.binance.vision/data/futures/um"
+workers = 8
+
+[availability]
+# Когда значение реально становится известно (минуты после его метки времени).
+# Метрики OI Binance публикуются снимками раз в 5 минут; берём консервативную задержку.
+oi_lag_minutes = 5
+oi_max_staleness_minutes = 30   # старее — считаем OI неизвестным
+
+[dataset]
+timeframes = ["5m", "15m"]
+
+[features.atr]
+period = 14
+pctl_window_days = 30
+
+[features.volume]
+window = 48
+
+[features.oi]
+window = 3                      # ΔOI за 3 бара до момента решения (по известным на тот момент значениям)
+
+[features.btc]
+window = 3
+
+[events.sweep]
+lookback = 24                   # уровень = экстремум предыдущих 24 баров
+min_age = 3                     # экстремум должен быть не моложе 3 баров
+depth_atr = 0.10                # основное значение; сетка устойчивости — в [study]
+cooldown = 12                   # не чаще одного события одной стороны за 12 баров
+
+[outcomes]
+r_atr = 1.0                     # 1R = 1 ATR (ATR предыдущего бара), стоп = 1R
+targets = [1.0, 2.0, 3.0]
+horizon_bars = 24
+primary_target = 1.0            # пререгистрированная основная метрика: цель 1R / стоп 1R / выход по времени
+
+[costs]
+taker_fee = 0.0005              # за сторону
+slippage = 0.0002               # за сторону
+
+[study]
+name = "nif_v1"
+depth_grid = [0.05, 0.10, 0.15, 0.20]
+oi_lag_diagnostic = 0           # прогон с нулевой задержкой OI: НЕ торгуемо, только диагностика механизма
+bootstrap = 2000
+permutations = 5000
+seed = 42
+alpha = 0.05
+practical_min_delta_r = 0.05    # меньше 0.05R разницы — практически незначимо
