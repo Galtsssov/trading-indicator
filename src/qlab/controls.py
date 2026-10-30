@@ -34,5 +34,4 @@ def matched(bars: pd.DataFrame, events: pd.DataFrame, seed: int) -> pd.DataFrame
             src.append(i)
     ctrl = pool.loc[chosen, ["ts", "available_at", "atr_ref"]].reset_index(names="bar")
     ctrl["direction"] = events.loc[src, "direction"].to_numpy()
-    ctrl["side"] = events.loc[src, "side"].to_numpy()
     return ctrl

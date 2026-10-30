@@ -33,3 +33,25 @@ def random_funding(m1: pd.DataFrame) -> pd.DataFrame:
 @pytest.fixture
 def m1():
     return random_walk_m1(20 * 1440, seed=1)
+
+
+def write_clean(data_dir, symbols, days: int, start: str = "2024-01-01") -> None:
+    """Синтетические Parquet в структуре data/clean — для сквозных тестов кода."""
+    for i, s in enumerate(symbols):
+        m = random_walk_m1(days * 1440, seed=100 + i, start=start)
+        for ds, df in (("klines_1m", m), ("metrics", random_oi(m, 200 + i)), ("funding", random_funding(m))):
+            p = data_dir / "clean" / ds
+            p.mkdir(parents=True, exist_ok=True)
+            df.to_parquet(p / f"{s}.parquet")
+
+
+def make_config(tmp_path):
+    """Конфиг платформы с короткими периодами под синтетику и маленьким числом повторов."""
+    from qlab.config import Config
+    cfg = Config.load("configs/platform.toml")
+    cfg.raw["data"]["dir"] = str(tmp_path / "data")
+    cfg.raw["splits"] = {"training": ["2024-01-01", "2024-02-01"], "validation": ["2024-02-01", "2024-03-01"],
+                         "holdout": ["2024-03-01", "2100-01-01"]}
+    cfg.raw["stats"].update(bootstrap=100, permutations=100)
+    cfg.raw["discovery"].update(bootstrap=100, min_events=30, min_days=10)
+    return cfg

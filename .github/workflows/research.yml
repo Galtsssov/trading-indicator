@@ -1,4 +1,6 @@
 # Тесты на каждый push; исследование на реальных данных Binance — по кнопке (Actions → research → Run workflow).
+# `all` = данные → качество → кэш признаков → discovery (training) → проверка новых гипотез (validation).
+# Holdout здесь никогда не открывается.
 name: research
 
 on:
@@ -33,10 +35,12 @@ jobs:
       - run: pip install -e .
       - uses: actions/cache@v4
         with:
-          path: data/raw
-          key: binance-raw-${{ github.run_id }}
-          restore-keys: binance-raw-
-      - name: Скачать данные, проверить качество, провести исследование
+          path: |
+            data/raw
+            data/cache
+          key: binance-${{ github.run_id }}
+          restore-keys: binance-
+      - name: Данные → кэш признаков → discovery → проверка гипотез
         run: python -m qlab all
       - uses: actions/upload-artifact@v4
         with:
@@ -46,7 +50,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add reports/
-          git commit -m "Отчёт nif_v1: прогон ${{ github.run_id }}" || exit 0
+          git add reports/ hypotheses/
+          git commit -m "Исследование: прогон ${{ github.run_id }}" || exit 0
           git pull --rebase origin ${{ github.ref_name }}
           git push origin HEAD:${{ github.ref_name }}

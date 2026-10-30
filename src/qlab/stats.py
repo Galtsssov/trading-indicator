@@ -59,8 +59,9 @@ class Comparison:
         return asdict(self)
 
 
-def _day_bootstrap(values: list[np.ndarray], days: list[np.ndarray], fn, b: int, rng) -> tuple[float, float]:
-    """Блочный бутстреп по дням: выбираем дни с возвращением, берём все события этих дней во всех группах."""
+def day_bootstrap_dist(values: list[np.ndarray], days: list[np.ndarray], fn, b: int, rng) -> np.ndarray:
+    """Блочный бутстреп по дням: выбираем дни с возвращением, берём все события этих дней во всех группах.
+    Возвращает распределение статистики fn(список средних по группам)."""
     all_days = np.unique(np.concatenate(days))
     sums, cnts = [], []
     for v, d in zip(values, days):
@@ -69,8 +70,11 @@ def _day_bootstrap(values: list[np.ndarray], days: list[np.ndarray], fn, b: int,
         cnts.append(np.bincount(k, minlength=len(all_days)).astype(float))
     draw = rng.integers(0, len(all_days), size=(b, len(all_days)))
     with np.errstate(invalid="ignore", divide="ignore"):
-        stat = fn([s[draw].sum(1) / c[draw].sum(1) for s, c in zip(sums, cnts)])
-    lo, hi = np.nanpercentile(stat, [2.5, 97.5])
+        return np.asarray(fn([s[draw].sum(1) / c[draw].sum(1) for s, c in zip(sums, cnts)]))
+
+
+def _day_bootstrap(values: list[np.ndarray], days: list[np.ndarray], fn, b: int, rng) -> tuple[float, float]:
+    lo, hi = np.nanpercentile(day_bootstrap_dist(values, days, fn, b, rng), [2.5, 97.5])
     return float(lo), float(hi)
 
 

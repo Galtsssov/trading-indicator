@@ -1,0 +1,79 @@
+# Конфигурация платформы (этап 2.2). Гипотезы здесь НЕ описываются — только в hypotheses/*.yaml.
+# Параметры ниже — общие правила игры. Их смена после просмотра результатов = подгонка.
+
+[data]
+dir = "data"
+symbols = ["ETHUSDT", "SOLUSDT", "BTCUSDT"]
+btc_symbol = "BTCUSDT"
+start = "2020-01"
+base_url = "https://data.binance.vision/data/futures/um"
+workers = 8
+
+[availability]
+oi_lag_minutes = 5
+oi_max_staleness_minutes = 30
+
+[dataset]
+timeframes = ["5m", "15m"]
+
+# Разбивка истории. [start, end). Holdout закрыт: доступ только командой test --split holdout
+# с явным подтверждением, один раз на гипотезу, после пройденной валидации.
+[splits]
+training = ["2020-01-01", "2024-01-01"]
+validation = ["2024-01-01", "2025-07-01"]
+holdout = ["2025-07-01", "2100-01-01"]
+
+[features.atr]
+period = 14
+pctl_window_days = 30
+
+[features.volume]
+window = 48
+
+[features.oi]
+window = 3
+
+[features.btc]
+window = 3
+
+[features.regime]
+er_window_days = 1        # efficiency ratio за сутки
+er_pctl_days = 90         # тренд = ER выше своей медианы за 90 дней
+btc_window_days = 1       # BTC strong/weak = знак доходности BTC за сутки
+risk_ma_days = 20         # risk on/off = BTC выше/ниже своей средней за 20 дней
+
+[costs]
+taker_fee = 0.0005
+slippage = 0.0002
+
+[stats]
+bootstrap = 2000
+permutations = 2000
+seed = 42
+
+# Библиотека эталонов: каждая гипотеза сравнивается со всеми.
+[baselines]
+return_lookback = 3       # mean reversion / momentum: |close − close[−3]| ≥ 2 ATR
+return_threshold_atr = 2.0
+
+# Поиск аномалий: только на training.
+[discovery]
+horizons = [1, 3, 6, 12, 24]
+quantile = 0.99
+window_days = 30
+bootstrap = 400
+alpha = 0.05
+min_events = 100
+min_days = 30             # события должны прийтись хотя бы на 30 разных дней (дни — независимые кластеры)
+controls_per_event = 5
+min_delta_atr = 0.05
+max_candidates = 10
+
+# Шаблон критериев для кандидатов, найденных discovery (фиксирован до поиска).
+[discovery.criteria]
+split = "validation"
+min_events = 300
+alpha = 0.05
+practical_min_delta_r = 0.05
+require_positive_net = true
+beat_baselines = ["random_entry", "mean_reversion", "momentum", "buy_every_sweep", "sell_every_sweep"]
