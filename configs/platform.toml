@@ -77,3 +77,22 @@ alpha = 0.05
 practical_min_delta_r = 0.05
 require_positive_net = true
 beat_baselines = ["random_entry", "mean_reversion", "momentum", "buy_every_sweep", "sell_every_sweep"]
+
+# Этап 3: Information Ceiling Study. Пререгистрация — docs/stage-3-preregistration.md.
+# Только training → validation. Holdout не открывается.
+[ceiling]
+symbols = ["ETHUSDT", "SOLUSDT"]
+timeframes = ["5m", "15m"]
+r_atr = [2.0, 1.0]            # 1R в ATR; первая — основная (ниже доля издержек в R)
+target_r = 2.0                # цель 2R, стоп 1R → RR 1:2
+horizon_bars = 48             # 5m: 4 часа; 15m: 12 часов
+primary_model = "lightgbm"
+models = ["lightgbm", "xgboost", "catboost", "random_forest", "hist_gb", "mlp"]
+top_k = [1, 2, 3]             # лучшие сигналы в сутки
+min_spacing_bars = 12         # сигналы одного дня не ближе 12 баров
+inner_valid_frac = 0.2        # последние 20% training — ранняя остановка (с зазором), validation не трогается
+learning_curve = [0.0625, 0.125, 0.25, 0.5, 1.0]
+bootstrap = 2000
+alpha = 0.05
+random_features = 20
+maker_cost_round_trip = 0.0004  # только справочно: лимитные вход и выход
