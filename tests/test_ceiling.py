@@ -24,7 +24,7 @@ def test_ceiling_instrument_on_random_walk(tmp_path):
     assert abs(s["shuffled_auc"] - 0.5) < 0.03
     assert s["planted_shap_rank"] == 1 and s["planted_auc"] > s["planted_auc_without_effect_model"] + 0.05
     assert abs(c["models"]["lightgbm"]["auc"]["long"][0] - 0.5) < 0.06       # на блуждании информации нет
-    assert set(c["ablation"]) >= {"OHLC", "OI", "Funding", "Minute", "Cross Asset", "Regime"}
+    assert set(c["ablation"]) >= {"OHLC", "OI", "Minute", "Cross Asset", "Regime"}  # funding в синтетике постоянный → отброшен
     assert len(c["learning_curve"]) == 5 and set(c["importance"]) >= {"gain", "shap", "permutation", "mutual_info"}
     path = ceiling_report.build(ceiling_report.load(tmp_path / "res"), cfg.section("ceiling"), tmp_path / "rep")
     assert "НЕДОСТАТОЧНО" in path.read_text()

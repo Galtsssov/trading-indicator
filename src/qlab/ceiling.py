@@ -127,6 +127,8 @@ def build_dataset(cfg: Config, data: Data, symbol: str, tf: str, r_atr: float, f
     gap = c["horizon_bars"]                                    # зазор: метки fit не заходят в inner
     part[(~is_val) & (np.arange(len(keep)) >= cut - gap) & (np.arange(len(keep)) < cut)] = "gap"
     X = fac.iloc[bar][features].reset_index(drop=True)
+    fit_rows = X.iloc[np.flatnonzero(part == "fit")]
+    X = X[[f for f in features if fit_rows[f].nunique(dropna=True) > 1]]   # константы на fit: информации нет, HistGB падает
     return Dataset(X, {k: v[keep] for k, v in y.items()}, {k: v[keep] for k, v in res.items()},
                    {k: v[keep] for k, v in gross.items()}, cost_r[keep], part,
                    bars["ts"].iloc[bar].reset_index(drop=True), bar)
@@ -151,8 +153,8 @@ def make_model(name: str, seed: int, n_estimators: int | None = None):
                                   verbose=0, thread_count=-1, random_seed=seed)
     if name == "random_forest":
         from sklearn.ensemble import RandomForestClassifier
-        return RandomForestClassifier(n_estimators=200, max_depth=12, min_samples_leaf=300, max_features=0.3,
-                                      max_samples=0.3, n_jobs=-1, random_state=seed)
+        return RandomForestClassifier(n_estimators=100, max_depth=12, min_samples_leaf=300, max_features=0.3,
+                                      max_samples=0.1, n_jobs=-1, random_state=seed)
     if name == "hist_gb":
         from sklearn.ensemble import HistGradientBoostingClassifier
         return HistGradientBoostingClassifier(max_iter=600, learning_rate=0.05, max_leaf_nodes=63, min_samples_leaf=300,
@@ -329,7 +331,8 @@ def study(cfg: Config, data: Data, symbol: str, tf: str, features: list[str], ou
                                                     c["min_spacing_bars"]), y_val, res_val, b_top, alpha1, rng)
         cfg_res["random_picks"] = rnd
         if primary:
-            cfg_res.update(_diagnostics(cfg, ds, features, fit, inner, val, best_iter, lgbm_long, p_primary, seed, rng,
+            cfg_res["features_used"] = list(ds.X.columns)
+            cfg_res.update(_diagnostics(cfg, ds, list(ds.X.columns), fit, inner, val, best_iter, lgbm_long, p_primary, seed, rng,
                                         quick))
         result["configs"][f"r{r_atr:g}"] = cfg_res
     result["seconds"] = round(time.time() - t0)
