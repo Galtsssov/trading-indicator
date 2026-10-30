@@ -21,10 +21,18 @@
    "registered_at": "2026-10-30T09:00:49+00:00",
    "fingerprint": "6438ca9532ed907f",
    "lock": "3951b72e9ef68c53",
-   "status": "Testing",
-   "reason": "",
+   "status": "Rejected",
+   "reason": "validation: ETHUSDT 5m: E после издержек -0.632R, CI [-0.674; -0.593]; ETHUSDT 15m: E после издержек -0.311R, CI [-0.369; -0.258]; SOLUSDT 5m: E после издержек -0.415R, CI [-0.451; -0.378]; SOLUSDT 15m: E после издержек -0.242R, CI [-0.300; -0.185]",
    "holdout_used": false,
-   "checks": []
+   "checks": [
+    {
+     "time": "2026-10-30T09:16:20+00:00",
+     "split": "validation",
+     "passed": false,
+     "reason": "ETHUSDT 5m: E после издержек -0.632R, CI [-0.674; -0.593]; ETHUSDT 15m: E после издержек -0.311R, CI [-0.369; -0.258]; SOLUSDT 5m: E после издержек -0.415R, CI [-0.451; -0.378]; SOLUSDT 15m: E после издержек -0.242R, CI [-0.300; -0.185]",
+     "report": "reports/checks/H002/validation-20261030T091620.md"
+    }
+   ]
   }
  }
 }
