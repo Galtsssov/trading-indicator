@@ -1,16 +1,14 @@
 # Поиск статистического преимущества: ETHUSDT / SOLUSDT, 5m / 15m
 
-Статус: **этап 2.3 — Feature Factory**: 387 объективных признаков в 34 категориях, каталог с формулами
-и объяснениями ([docs/FEATURES.md](docs/FEATURES.md)), анализ дублей и кластеров на реальных данных.
-Гипотезы собираются в YAML из готовых признаков. Стратегий, индикаторов и ботов нет намеренно.
+Статус: **этап 3 завершён — Information Ceiling Study.** Вывод по заранее зафиксированному правилу:
+в текущем информационном пространстве (OHLCV + производные + OI + Funding + Long/Short + внутрибаровые
+признаки) достаточного сигнала для цели «ETH/SOL, 5m/15m, RR ≥ 1:2, WR > 50 % после комиссий» не обнаружено.
+Шесть моделей (LightGBM, XGBoost, CatBoost, Random Forest, HistGB, MLP) на 323 признаках дают AUC 0.53–0.57;
+лучший WR сигналов дня — 0.46 из нужных 0.50. Проверки исправности прибора пройдены.
+Итог — [docs/stage-3-information-ceiling.md](docs/stage-3-information-ceiling.md). Следующий шаг — новые данные (aggTrades, spot vs futures).
 
-Запуск: `pip install -e .` и `python -m qlab all`, либо на GitHub: Actions → research → Run workflow.
-Подробности — [docs/stage-2.3.md](docs/stage-2.3.md).
-
-**Результаты:** H001 (NIF) и H002 (продолжение после свипа) — Rejected; сканер аномалий не нашёл
-устойчивых закономерностей. 387 признаков сводятся к ~200 независимым «идеям»; популярные индикаторы
-(VWAP, RSI, стохастик, premium/discount) измеряют одно и то же. Следующий шаг — тест «потолка информации»:
-есть ли в OHLCV вообще данные для цели RR 1:2 / WR > 50 %.
+Запуск: `pip install -e ".[ceiling]"`; измерение — `python -m qlab ceiling ETHUSDT 15m`, отчёт — `python -m qlab ceiling-report`;
+на GitHub — Actions → ceiling → Run workflow.
 
 | Файл | Что внутри |
 |---|---|
@@ -20,6 +18,9 @@
 | [research/04-top20.md](research/04-top20.md) | Часть 7: топ-20 гипотез, «кладбище» отброшенных идей, протокол и критерии отказа для этапа 2 |
 | [docs/platform-architecture.md](docs/platform-architecture.md) | **Этап 2:** архитектура исследовательской платформы (12 модулей), roadmap и один следующий шаг |
 | [docs/mvp-2.1.md](docs/mvp-2.1.md) | **Этап 2.1:** как устроен и запускается конвейер, инженерные решения, ограничения, риски, задачи на 2.2 |
+| [docs/stage-3-information-ceiling.md](docs/stage-3-information-ceiling.md) | **Этап 3:** сколько информации в данных и хватает ли её для цели — ответ и обоснование |
+| [docs/stage-3-preregistration.md](docs/stage-3-preregistration.md) | Правило решения этапа 3, зафиксированное до кода и запуска |
+| [reports/ceiling/REPORT.md](reports/ceiling/REPORT.md) | Полный отчёт измерения: модели, кривые обучения, абляция, важность, калибровка, проверки |
 | [docs/stage-2.3.md](docs/stage-2.3.md) | **Этап 2.3:** Feature Factory, дубли и кластеры признаков, тест «потолка информации» |
 | [docs/FEATURES.md](docs/FEATURES.md) | Каталог 387 признаков: формула, тип, размерность, зависимости, стоимость, механизм, объяснение |
 | [docs/stage-2.2.md](docs/stage-2.2.md) | **Этап 2.2:** платформа поиска edge, результаты H002 и сканера аномалий, 10 направлений по EVOI |
