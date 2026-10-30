@@ -18,6 +18,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]
+ceiling = ["lightgbm>=4", "xgboost>=2", "catboost>=1.2", "scikit-learn>=1.4"]
 
 [project.scripts]
 qlab = "qlab.cli:main"

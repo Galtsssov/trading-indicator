@@ -1,0 +1,65 @@
+# Этап 3: Information Ceiling Study. По кнопке: Actions → ceiling → Run workflow.
+# 4 параллельные задачи (ETH/SOL × 5m/15m), затем сборка отчёта и вердикта. Только training → validation.
+name: ceiling
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        symbol: [ETHUSDT, SOLUSDT]
+        tf: [5m, 15m]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[ceiling]"
+      - uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/raw
+            data/cache
+          key: binance-${{ github.run_id }}
+          restore-keys: binance-
+      - name: Данные, кэш признаков, измерение
+        run: |
+          python -m qlab fetch
+          python -m qlab ceiling ${{ matrix.symbol }} ${{ matrix.tf }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ceiling-${{ matrix.symbol }}-${{ matrix.tf }}
+          path: reports/ceiling/results/
+
+  report:
+    needs: measure
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[ceiling]"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: ceiling-*
+          path: reports/ceiling/results/
+          merge-multiple: true
+      - run: python -m qlab ceiling-report
+      - name: Закоммитить отчёт
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/
+          git commit -m "Information Ceiling: прогон ${{ github.run_id }}" || exit 0
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin HEAD:${{ github.ref_name }}

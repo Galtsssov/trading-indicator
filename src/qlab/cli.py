@@ -10,6 +10,8 @@
   pending               проверить на validation все гипотезы Testing без проверки
   catalog               пересобрать docs/FEATURES.md из спецификаций Feature Factory
   factory               посчитать Feature Factory и отчёт: корреляции, дубли, кластеры (training)
+  ceiling SYMBOL TF     Information Ceiling Study для одной пары (training → validation)
+  ceiling-report        собрать отчёт и вердикт по всем парам (reports/ceiling/REPORT.md)
   all                   fetch → quality → cache → factory → pending (holdout не трогается)
 """
 from __future__ import annotations
@@ -116,6 +118,21 @@ def cmd_factory(cfg: Config, data: Data) -> None:
     log.info("Feature Factory: %s", path)
 
 
+def cmd_ceiling(cfg: Config, data: Data, symbol: str, tf: str) -> None:
+    from qlab import ceiling
+    core = json.loads(Path("reports/factory/core_features.json").read_text())
+    res = ceiling.study(cfg, data, symbol, tf, core, Path("reports/ceiling/results"))
+    ledger("ceiling", symbol=symbol, tf=tf, seconds=res["seconds"])
+
+
+def cmd_ceiling_report(cfg: Config) -> None:
+    from qlab import ceiling_report
+    out = Path("reports/ceiling")
+    path = ceiling_report.build(ceiling_report.load(out / "results"), cfg.section("ceiling"), out)
+    ledger("ceiling-report", report=str(path), sufficient=json.loads((out / "verdict.json").read_text())["sufficient"])
+    log.info("Information Ceiling: %s", path)
+
+
 def cmd_pending(cfg: Config, data: Data, reg: Registry) -> None:
     for hid, e in sorted(reg.items.items()):
         if e["status"] == "Testing" and not any(c["split"] == "validation" for c in e["checks"]):
@@ -125,7 +142,7 @@ def cmd_pending(cfg: Config, data: Data, reg: Registry) -> None:
 def main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(prog="qlab", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("command", choices=["fetch", "quality", "cache", "registry", "register", "test", "discover",
-                                        "pending", "catalog", "factory", "all"])
+                                        "pending", "catalog", "factory", "ceiling", "ceiling-report", "all"])
     ap.add_argument("args", nargs="*")
     ap.add_argument("--config", default="configs/platform.toml")
     ap.add_argument("--registry", default="hypotheses/registry.json")
@@ -157,6 +174,10 @@ def main(argv: list[str] | None = None) -> None:
             log.info("каталог: %s", factory_docs.write())
         case "factory":
             cmd_factory(cfg, data)
+        case "ceiling":
+            cmd_ceiling(cfg, data, *a.args)
+        case "ceiling-report":
+            cmd_ceiling_report(cfg)
         case "all":
             cmd_fetch(cfg)
             cmd_quality(cfg)
