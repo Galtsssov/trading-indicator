@@ -19,12 +19,17 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 ceiling = ["lightgbm>=4", "xgboost>=2", "catboost>=1.2", "scikit-learn>=1.4"]
+terminal = ["fastapi>=0.110", "uvicorn>=0.29"]
 
 [project.scripts]
 qlab = "qlab.cli:main"
+qlab-terminal = "qlab.terminal.__main__:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+"qlab.terminal" = ["static/*", "static/vendor/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

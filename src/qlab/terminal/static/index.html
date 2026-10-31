@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Торговый терминал</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/vendor/lightweight-charts.standalone.production.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">Терминал<span>.</span></div>
+    <div class="seg" id="symbols"></div>
+    <div class="seg" id="tfs"></div>
+    <div class="badge" id="regime">—</div>
+    <div class="spacer"></div>
+    <div class="seg" id="views">
+      <button data-view="chart" class="on">График</button>
+      <button data-view="journal">Журнал</button>
+      <button data-view="analytics">Аналитика</button>
+    </div>
+    <div class="status"><span class="dot" id="dot"></span><span id="status">запуск…</span><span class="num" id="clock"></span></div>
+  </header>
+
+  <main class="view chart-view" id="view-chart">
+    <section id="chart-wrap">
+      <div class="legend">
+        <span><i style="background:#c9a227"></i>VWAP</span>
+        <span><i style="background:#7a6cf0"></i>ATR</span>
+        <span><i style="background:#e0569b"></i>Ликвидность / Sweep</span>
+        <span><i style="background:#f08c3a"></i>EQH / EQL</span>
+        <span><i style="background:#5b8def"></i>BOS</span>
+        <span><i style="background:#c9a227"></i>CHoCH</span>
+      </div>
+      <div id="chart"></div>
+      <div id="chart-msg">Загрузка данных…</div>
+    </section>
+    <aside id="panel">
+      <div class="price-head"><div><div class="muted" id="pair">—</div><div class="px num" id="px">—</div></div><div class="num" id="chg"></div></div>
+      <div class="card trade">
+        <h3>Сделка</h3>
+        <div class="row">
+          <label>Стоп, ATR<input id="stop-atr" type="number" step="0.1" min="0.1" value="1.0"></label>
+          <label>Цель, R (пусто — без цели)<input id="target-r" type="number" step="0.5" min="0.5" value="2"></label>
+        </div>
+        <div class="row">
+          <label>Сетап<input id="setup" list="setups" placeholder="например: свип + возврат"></label>
+          <label>Заметка<textarea id="note" rows="1" placeholder="почему вхожу"></textarea></label>
+        </div>
+        <datalist id="setups"></datalist>
+        <div class="preview num" id="preview"></div>
+        <div class="btns"><button class="btn long" id="btn-long">LONG</button><button class="btn short" id="btn-short">SHORT</button></div>
+        <div id="open-trades"></div>
+      </div>
+      <div class="card" id="event-card"><h3>Последние события и похожие случаи</h3><div id="event"></div></div>
+      <div id="facts"></div>
+    </aside>
+  </main>
+
+  <main class="view page" id="view-journal" hidden></main>
+  <main class="view page" id="view-analytics" hidden></main>
+
+  <footer>
+    <span>Терминал показывает факты и статистику прошлых похожих случаев. Это не торговые сигналы.</span>
+    <span>Графики: <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView Lightweight Charts™</a></span>
+  </footer>
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>

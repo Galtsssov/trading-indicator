@@ -1,14 +1,30 @@
-# Поиск статистического преимущества: ETHUSDT / SOLUSDT, 5m / 15m
+# Торговый терминал ETH / SOL / BTC и исследовательская платформа
 
-Статус: **этап 3 завершён — Information Ceiling Study.** Вывод по заранее зафиксированному правилу:
-в текущем информационном пространстве (OHLCV + производные + OI + Funding + Long/Short + внутрибаровые
-признаки) достаточного сигнала для цели «ETH/SOL, 5m/15m, RR ≥ 1:2, WR > 50 % после комиссий» не обнаружено.
-Шесть моделей (LightGBM, XGBoost, CatBoost, Random Forest, HistGB, MLP) на 323 признаках дают AUC 0.53–0.57;
-лучший WR сигналов дня — 0.46 из нужных 0.50. Проверки исправности прибора пройдены.
-Итог — [docs/stage-3-information-ceiling.md](docs/stage-3-information-ceiling.md). Следующий шаг — новые данные (aggTrades, spot vs futures).
+## Торговый терминал
 
-Запуск: `pip install -e ".[ceiling]"`; измерение — `python -m qlab ceiling ETHUSDT 15m`, отчёт — `python -m qlab ceiling-report`;
-на GitHub — Actions → ceiling → Run workflow.
+**Рабочий инструмент на каждый день** — [docs/TERMINAL.md](docs/TERMINAL.md).
+Объективная картина рынка (структура, ликвидность, VWAP, режим, позиционирование), статистика похожих
+ситуаций из истории, журнал сделок со скриншотами и личная аналитика: что работает именно у вас.
+Сигналов BUY/SELL нет — только факты и статистика.
+
+Запуск: Windows — `start-terminal.bat`, macOS — `start-terminal.command`, или:
+
+```bash
+pip install -e ".[terminal]"
+```
+
+```bash
+qlab-terminal
+```
+
+![терминал](docs/img/terminal-chart.png)
+
+## Исследование (завершено)
+
+Итог исследования: в OHLCV и производных признаках недостаточно информации для полностью автоматической
+системы с целью «ETH/SOL, 5m/15m, RR ≈ 1:2, WR > 50 % после комиссий»
+([docs/stage-3-information-ceiling.md](docs/stage-3-information-ceiling.md)). Поэтому продукт — не индикатор,
+а инструмент для принятия решений. Исследовательская платформа (`python -m qlab ...`) сохранена и работает.
 
 | Файл | Что внутри |
 |---|---|
@@ -18,6 +34,7 @@
 | [research/04-top20.md](research/04-top20.md) | Часть 7: топ-20 гипотез, «кладбище» отброшенных идей, протокол и критерии отказа для этапа 2 |
 | [docs/platform-architecture.md](docs/platform-architecture.md) | **Этап 2:** архитектура исследовательской платформы (12 модулей), roadmap и один следующий шаг |
 | [docs/mvp-2.1.md](docs/mvp-2.1.md) | **Этап 2.1:** как устроен и запускается конвейер, инженерные решения, ограничения, риски, задачи на 2.2 |
+| [docs/TERMINAL.md](docs/TERMINAL.md) | **Торговый терминал:** запуск, ежедневная работа, что на графике и в панели, устройство |
 | [docs/stage-3-information-ceiling.md](docs/stage-3-information-ceiling.md) | **Этап 3:** сколько информации в данных и хватает ли её для цели — ответ и обоснование |
 | [docs/stage-3-preregistration.md](docs/stage-3-preregistration.md) | Правило решения этапа 3, зафиксированное до кода и запуска |
 | [reports/ceiling/REPORT.md](reports/ceiling/REPORT.md) | Полный отчёт измерения: модели, кривые обучения, абляция, важность, калибровка, проверки |

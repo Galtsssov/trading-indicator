@@ -1,0 +1,15 @@
+# Настройки торгового терминала. Данные и журнал — в папке data/terminal (не в git).
+[terminal]
+symbols = ["ETHUSDT", "SOLUSDT", "BTCUSDT"]
+timeframes = ["5m", "15m"]
+host = "127.0.0.1"           # только локально
+port = 8777
+history_days = 30            # сколько дней минуток держать в памяти (для режимов, ATR-процентиля)
+poll_seconds = 4             # как часто обновлять свечи с Binance
+metrics_seconds = 60         # OI, funding, long/short
+similar_k = 150              # сколько ближайших исторических случаев брать для статистики
+data_dir = "data/terminal"
+
+[costs]                      # для расчёта результата сделок в R
+taker_fee = 0.0005
+slippage = 0.0002
