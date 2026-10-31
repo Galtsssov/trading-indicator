@@ -126,7 +126,7 @@ class Ctx:
     @cached_property
     def day(self) -> pd.Series: return self.ts.dt.floor("D")
     @cached_property
-    def week(self) -> pd.Series: return self.day - pd.to_timedelta(self.ts.dt.dayofweek, unit="D")
+    def week(self) -> pd.Series: return self.day - pd.to_timedelta(self.ts.dt.day_of_week, unit="D")
 
     def hmax(self, w: int) -> pd.Series:
         return self.memo(("hmax", w), lambda: self.h.rolling(w, min_periods=w).max())

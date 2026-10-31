@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8", "httpx", "httpx2"]   # httpx/httpx2 — тестовый клиент FastAPI (разные версии Starlette)
 ceiling = ["lightgbm>=4", "xgboost>=2", "catboost>=1.2", "scikit-learn>=1.4"]
 terminal = ["fastapi>=0.110", "uvicorn>=0.29"]
 

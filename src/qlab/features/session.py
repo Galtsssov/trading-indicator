@@ -16,5 +16,5 @@ def session(df: pd.DataFrame, ctx: Context) -> pd.DataFrame:
     return pd.DataFrame({
         "hour": hour,
         "session": names[np.searchsorted(starts, hour.to_numpy(), side="right") - 1],
-        "weekend": df["ts"].dt.dayofweek >= 5,
+        "weekend": df["ts"].dt.day_of_week >= 5,
     })

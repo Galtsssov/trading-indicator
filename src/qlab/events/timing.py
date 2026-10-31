@@ -28,7 +28,7 @@ def session_open(bars: pd.DataFrame, p) -> pd.DataFrame:
     tz, h, m, weekdays_only = SESSIONS[p["session"]]
     mask = _contains_local_time(bars, tz, h, m)
     if weekdays_only:
-        mask = mask & (bars["ts"].dt.tz_convert(tz).dt.dayofweek < 5).to_numpy()
+        mask = mask & (bars["ts"].dt.tz_convert(tz).dt.day_of_week < 5).to_numpy()
     return frame(bars, mask, sign_of_bar(bars))
 
 

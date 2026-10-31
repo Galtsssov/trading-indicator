@@ -23,7 +23,7 @@ def _min_since_local(x, tz: str, hour: int, minute: int, weekdays: bool) -> pd.S
     t = hour * 60 + minute
     back = (now < t).astype(int)                      # открытие сегодня ещё не наступило → вчерашнее
     if weekdays:
-        dow = (local.dt.dayofweek.to_numpy() - back) % 7
+        dow = (local.dt.day_of_week.to_numpy() - back) % 7
         back = back + np.select([dow == 6, dow == 5], [2, 1], 0)   # воскресенье/суббота → пятница
     return pd.Series(now - t + back * 1440, index=x.b.index, dtype=float)
 
@@ -42,11 +42,11 @@ for name, fn in (("tm_dow_sin", np.sin), ("tm_dow_cos", np.cos)):
     family("Time", "TM", name, None, formula=f"{name[-3:]}(2π·день_недели/7)", kind="циклический", unit="[−1,1]",
            deps=DEPS, cost="O(n)", mechanism="Разный состав участников по дням", measures="день недели в циклическом виде",
            why="Выходные и понедельники ведут себя иначе", limits="Мало независимых недель",
-           fn=lambda x, f=fn: _cyc(x.ts.dt.dayofweek.astype(float), 7, f))
+           fn=lambda x, f=fn: _cyc(x.ts.dt.day_of_week.astype(float), 7, f))
 family("Time", "TM", "tm_weekend", None, formula="1, если суббота или воскресенье (UTC)", kind="бинарный",
        unit="0/1", deps=DEPS, cost="O(n)", mechanism="Нет институционалов, тонкий рынок", measures="выходной ли день",
        why="Отдельный режим ликвидности", limits="Граница по UTC условна",
-       fn=lambda x: (x.ts.dt.dayofweek >= 5).astype(float))
+       fn=lambda x: (x.ts.dt.day_of_week >= 5).astype(float))
 family("Time", "TM", "tm_min_to_funding", None, formula="минут до ближайшего 00:00 / 08:00 / 16:00 UTC",
        kind="непрерывный", unit="минуты", deps=DEPS, cost="O(n)",
        mechanism="Позиции закрывают/открывают к расчёту funding", measures="время до расчёта funding",
@@ -92,11 +92,11 @@ family(*C, "cl_hours_to_weekly_expiry", None, formula="часов до ближ�
        kind="непрерывный", unit="часы", deps=DEPS, cost="O(n)", mechanism="Хеджирование дилеров перед экспирацией (pinning)",
        measures="время до еженедельной экспирации опционов", why="Опционный поток с известным временем",
        limits="Опционы значимы в основном для BTC и ETH",
-       fn=lambda x: ((4 - x.ts.dt.dayofweek) % 7 * 24 + 8 - x.ts.dt.hour - x.ts.dt.minute / 60) % 168)
+       fn=lambda x: ((4 - x.ts.dt.day_of_week) % 7 * 24 + 8 - x.ts.dt.hour - x.ts.dt.minute / 60) % 168)
 family(*C, "cl_last_friday", None, formula="1, если последняя пятница месяца", kind="бинарный", unit="0/1", deps=DEPS,
        cost="O(n)", mechanism="Месячная экспирация опционов", measures="день месячной экспирации",
        why="Самая крупная регулярная экспирация", limits="12 событий в год",
-       fn=lambda x: ((x.ts.dt.dayofweek == 4) & (x.ts.dt.day + 7 > x.ts.dt.days_in_month)).astype(float))
+       fn=lambda x: ((x.ts.dt.day_of_week == 4) & (x.ts.dt.day + 7 > x.ts.dt.days_in_month)).astype(float))
 family(*C, "cl_week_of_month", None, formula="ceil(число / 7)", kind="счётчик", unit="1–5", deps=DEPS, cost="O(n)",
        mechanism="Внутримесячная сезонность (зарплаты, выплаты)", measures="неделя месяца", why="Грубая месячная фаза",
        limits="Слабая гипотеза для крипты", fn=lambda x: np.ceil(x.ts.dt.day / 7).astype(float))
